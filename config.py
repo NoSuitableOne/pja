@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -9,6 +8,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or '_SECRETKEY_pja'
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
     FLASK_MAIL_SUBJECT_PREFIX = '[Flasky]'
     FLASK_MAIL_SENDER = 'Flasky Admin <xxx@sss.com>'
     FLASK_ADMIN = os.environ.get('FLASK_ADMIN')
