@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-from app import db
+from app.ext import db
 
 
+# role model
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
@@ -12,13 +13,3 @@ class Role(db.Model):
 
     def __repr__(self):
         return '<Role %r>' % self.name
-
-
-class User(db.Model):
-    __tablename__ = 'users'
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(64), unique=True)
-    role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
-
-    def __repr__(self):
-        return '<User %r>' % self.username

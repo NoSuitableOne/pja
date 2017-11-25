@@ -430,7 +430,7 @@ class _TemporaryFileCloser:
     # the wrapper to do anything special.  We still use it so that
     # file.name is useful (i.e. not "(fdopen)") with NamedTemporaryFile.
     if _os.name != 'nt':
-        # Cache the unlinker so we don't get spurious errors at
+        # Cache the unlinker so we don't get spurious error at
         # shutdown when the module-level "os" is None'd out.  Note
         # that this must be referenced as self.unlink, because the
         # name TemporaryFileWrapper may also get None'd out before

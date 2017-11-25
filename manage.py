@@ -2,12 +2,18 @@
 # _*_ coding:utf-8 _*_
 
 import os
-from app import create_app, db
-from app.models import User, Role
-from flask_script import Manager, Shell
+from app import create_app
+from config import configs
+from app.ext import db
+from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 
-app = create_app(os.getenv('FLASK_CONFIG') or 'default')
+# load config of app
+app_config = os.getenv('pja') or configs['DEV']
+
+# create app
+app = create_app(app_config)
+
 manager = Manager(app)
 migrate = Migrate(app, db)
 
@@ -15,8 +21,6 @@ migrate = Migrate(app, db)
 def make_shell_context():
     return dict(app=app, db=db)
 
-manager.add_command('Shell', Shell(make_context=make_shell_context))
-manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
     manager.run()

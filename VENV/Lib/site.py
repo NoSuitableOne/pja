@@ -265,10 +265,10 @@ def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_pre
             else:
                 sitedirs = [prefix, os.path.join(prefix, "lib", "site-packages")]
             if sys.platform == 'darwin':
-                # for framework builds *only* we add the standard Apple
+                # for main builds *only* we add the standard Apple
                 # locations. Currently only per-user, but /Library and
                 # /Network/Library could be added too
-                if 'Python.framework' in prefix:
+                if 'Python.main' in prefix:
                     home = os.environ.get('HOME')
                     if home:
                         sitedirs.append(

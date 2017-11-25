@@ -607,15 +607,15 @@ class Mapping(Sized, Iterable, Container):
             return True
 
     def keys(self):
-        "D.keys() -> a set-like object providing a view on D's keys"
+        "D.keys() -> a set-like object providing a views on D's keys"
         return KeysView(self)
 
     def items(self):
-        "D.items() -> a set-like object providing a view on D's items"
+        "D.items() -> a set-like object providing a views on D's items"
         return ItemsView(self)
 
     def values(self):
-        "D.values() -> an object providing a view on D's values"
+        "D.values() -> an object providing a views on D's values"
         return ValuesView(self)
 
     def __eq__(self, other):

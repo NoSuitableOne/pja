@@ -626,7 +626,7 @@ def commonpath(paths):
             raise ValueError("Can't mix absolute and relative paths") from None
 
         # Check that all drive letters or UNC paths match. The check is made only
-        # now otherwise type errors for mixing strings and bytes would not be
+        # now otherwise type error for mixing strings and bytes would not be
         # caught.
         if len(set(d for d, p in drivesplits)) != 1:
             raise ValueError("Paths don't have the same drive")

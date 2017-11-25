@@ -1,0 +1,6 @@
+npm-debug.log
+/**/.idea
+TASKS
+/**/node_modules
+/**/dist
+__pycache__

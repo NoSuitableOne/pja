@@ -115,7 +115,7 @@ class Codec:
     """ Defines the interface for stateless encoders/decoders.
 
         The .encode()/.decode() methods may use different error
-        handling schemes by providing the errors argument. These
+        handling schemes by providing the error argument. These
         string values are predefined:
 
          'strict' - raise a ValueError error (or a subclass)
@@ -139,7 +139,7 @@ class Codec:
         """ Encodes the object input and returns a tuple (output
             object, length consumed).
 
-            errors defines the error handling to apply. It defaults to
+            error defines the error handling to apply. It defaults to
             'strict' handling.
 
             The method may not store state in the Codec instance. Use
@@ -162,7 +162,7 @@ class Codec:
             buffer slot. Python strings, buffer objects and memory
             mapped files are examples of objects providing this slot.
 
-            errors defines the error handling to apply. It defaults to
+            error defines the error handling to apply. It defaults to
             'strict' handling.
 
             The method may not store state in the Codec instance. Use
@@ -187,7 +187,7 @@ class IncrementalEncoder(object):
         Creates an IncrementalEncoder instance.
 
         The IncrementalEncoder may use different error handling schemes by
-        providing the errors keyword argument. See the module docstring
+        providing the error keyword argument. See the module docstring
         for a list of possible values.
         """
         self.errors = errors
@@ -261,7 +261,7 @@ class IncrementalDecoder(object):
         Create an IncrementalDecoder instance.
 
         The IncrementalDecoder may use different error handling schemes by
-        providing the errors keyword argument. See the module docstring
+        providing the error keyword argument. See the module docstring
         for a list of possible values.
         """
         self.errors = errors
@@ -351,7 +351,7 @@ class StreamWriter(Codec):
             stream must be a file-like object open for writing.
 
             The StreamWriter may use different error handling
-            schemes by providing the errors keyword argument. These
+            schemes by providing the error keyword argument. These
             parameters are predefined:
 
              'strict' - raise a ValueError (or a subclass)
@@ -426,7 +426,7 @@ class StreamReader(Codec):
             stream must be a file-like object open for reading.
 
             The StreamReader may use different error handling
-            schemes by providing the errors keyword argument. These
+            schemes by providing the error keyword argument. These
             parameters are predefined:
 
              'strict' - raise a ValueError (or a subclass)
@@ -621,7 +621,7 @@ class StreamReader(Codec):
 
             Note that no stream repositioning should take place.
             This method is primarily intended to be able to recover
-            from decoding errors.
+            from decoding error.
 
         """
         self.bytebuffer = b""
@@ -875,7 +875,7 @@ def open(filename, mode='r', encoding=None, errors='strict', buffering=1):
         encoding specifies the encoding which is to be used for the
         file.
 
-        errors may be given to define the error handling. It defaults
+        error may be given to define the error handling. It defaults
         to 'strict' which causes ValueErrors to be raised in case an
         encoding error occurs.
 
@@ -916,7 +916,7 @@ def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):
 
         If file_encoding is not given, it defaults to data_encoding.
 
-        errors may be given to define the error handling. It defaults
+        error may be given to define the error handling. It defaults
         to 'strict' which causes ValueErrors to be raised in case an
         encoding error occurs.
 
@@ -1013,7 +1013,7 @@ def iterencode(iterator, encoding, errors='strict', **kwargs):
 
     Encodes the input strings from the iterator using an IncrementalEncoder.
 
-    errors and kwargs are passed through to the IncrementalEncoder
+    error and kwargs are passed through to the IncrementalEncoder
     constructor.
     """
     encoder = getincrementalencoder(encoding)(errors, **kwargs)
@@ -1031,7 +1031,7 @@ def iterdecode(iterator, encoding, errors='strict', **kwargs):
 
     Decodes the input strings from the iterator using an IncrementalDecoder.
 
-    errors and kwargs are passed through to the IncrementalDecoder
+    error and kwargs are passed through to the IncrementalDecoder
     constructor.
     """
     decoder = getincrementaldecoder(encoding)(errors, **kwargs)

@@ -218,15 +218,15 @@ class OrderedDict(dict):
     update = __update = MutableMapping.update
 
     def keys(self):
-        "D.keys() -> a set-like object providing a view on D's keys"
+        "D.keys() -> a set-like object providing a views on D's keys"
         return _OrderedDictKeysView(self)
 
     def items(self):
-        "D.items() -> a set-like object providing a view on D's items"
+        "D.items() -> a set-like object providing a views on D's items"
         return _OrderedDictItemsView(self)
 
     def values(self):
-        "D.values() -> an object providing a view on D's values"
+        "D.values() -> an object providing a views on D's values"
         return _OrderedDictValuesView(self)
 
     __ne__ = MutableMapping.__ne__
@@ -850,7 +850,7 @@ class Counter(dict):
 
 class ChainMap(MutableMapping):
     ''' A ChainMap groups multiple dicts (or other mappings) together
-    to create a single, updateable view.
+    to create a single, updateable views.
 
     The underlying mappings are stored in a list.  That list is public and can
     be accessed or updated using the *maps* attribute.  There is no other

@@ -23,20 +23,16 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="dfe708d6-a700-40f0-8b25-565c32de2d59">
-        <schema name="main" object-types="column, constraint, index, table, dataset trigger, view" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="dfe708d6-a700-40f0-8b25-565c32de2d59">
-      <console name="Connection" type="STANDARD" />
+    <connection id="473c5f94-31e6-441d-bad1-1c0f0aaf3989">
+      <console name="db_dev" type="STANDARD" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-list connection-id="dfe708d6-a700-40f0-8b25-565c32de2d59" dataset="main.users" active-filter-id="EMPTY_FILTER" />
-    <filter-list connection-id="dfe708d6-a700-40f0-8b25-565c32de2d59" dataset="main.roles" active-filter-id="EMPTY_FILTER" />
+    <filter-list connection-id="473c5f94-31e6-441d-bad1-1c0f0aaf3989" dataset="main.users" active-filter-id="EMPTY_FILTER" />
+    <filter-list connection-id="473c5f94-31e6-441d-bad1-1c0f0aaf3989" dataset="main.roles" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -61,10 +57,10 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="dfe708d6-a700-40f0-8b25-565c32de2d59" active="true">
+      <connection id="473c5f94-31e6-441d-bad1-1c0f0aaf3989" active="true">
         <database>
-          <name value="Connection" />
-          <description value="data-dev" />
+          <name value="db_dev" />
+          <description value="" />
           <database-type value="SQLITE" />
           <config-type value="BASIC" />
           <database-version value="3.0" />
@@ -76,7 +72,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="G:\CODE\git_repo\pja\data-dev.sqlite" schema="main" />
+            <file path="G:\CODE\git_repo\pja\db_dev.sqlite" schema="main" />
           </files>
           <os-authentication value="false" />
           <empty-password value="false" />
