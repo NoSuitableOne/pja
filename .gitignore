@@ -1,6 +1,8 @@
-npm-debug.log
-/**/.idea
+/**/npm-debug.log
+/**/**/.idea
 TASKS
-/**/node_modules
-/**/dist
-__pycache__
+/**/**/node_modules
+/**/**/dist
+/**/__pycache__
+/frontend
+**.png

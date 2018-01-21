@@ -1,0 +1,41 @@
+.framework {
+  color: red;
+  height: 100vh;
+}
+
+#header {
+  height: 100%;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 8vh;
+  text-align: center;
+}
+
+#logo {
+  height: 100%;
+  width: 40px;
+  display: inline-block;
+  margin-right: 20px;
+  background: url("../../assets/rss.gif") no-repeat;
+  background-size: contain;
+}
+
+#iconBar {
+  padding: 12px 20px;
+  font-size: 22px;
+}
+
+#searchBar {
+  padding-left: 80px;
+  padding-right: 20px;
+}
+
+.contentBackground {
+  background-color: #ECECEC;
+  height: 85vh;
+  padding: 40px 80px;
+}
