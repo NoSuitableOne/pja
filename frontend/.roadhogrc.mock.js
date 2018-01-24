@@ -1,5 +1,5 @@
 export default {
-  'GET /mock/users': {users: [1,2]},
+  'GET /test/msg': {msg: 'newsg'},
 
-  'POST /mock/test': {TEST: 'SUCCESS'}
+  'POST /test/pmsg': {TEST: 'SUCCESS'}
 };
