@@ -13,6 +13,7 @@ app.use(createLoading());
 // app.model(require('./models/example'));
 app.model(require('./models/counter'));
 app.model(require('./models/layout'));
+app.model(require('./models/news'));
 
 // 4. Router
 app.router(require('./router'));
