@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Button } from 'antd';
+import { Layout, Button, Pagination } from 'antd';
 import styles from './Counter.css';
 
 const { Header, Footer, Sider, Content } = Layout;
