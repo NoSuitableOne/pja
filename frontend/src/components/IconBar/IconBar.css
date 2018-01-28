@@ -1,0 +1,20 @@
+#logo {
+  height: 100%;
+  display: inline-block;
+  margin-right: 20px;
+  background: url("../../assets/rss.gif") no-repeat;
+  background-size: contain;
+}
+
+#iconBar {
+  padding: 12px 20px;
+  font-size: 22px;
+}
+
+#icons {
+  width: 200px;
+  height: 100%;
+  background-color: purple;
+  display: inline-block;
+  margin-left: 60px;
+}
