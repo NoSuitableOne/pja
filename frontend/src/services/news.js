@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
 function service() {
-  return request('/test/msg');
+  return request('/news');
 }
 
 export { service };

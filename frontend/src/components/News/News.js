@@ -4,37 +4,26 @@ import { Col, Row } from 'antd';
 import Cardpad from '../Cardpad/Cardpad';
 
 const News = ({ news }) => {
+  const CardpadElement = (news.origin).map((ele, idx) => (
+    <Col key={idx} span={8}>
+      <Cardpad
+        loading={ele.state.loading}
+        title={ele.title}
+        total={ele.total}
+        passage={ele.passage}
+      />
+    </Col>
+  ));
+
   return (
     <Row gutter={32}>
-      <Col span={8}>
-        <Cardpad
-          loading={news.loading}
-          total={news.total}
-          onChange={news.onChange}
-        />
-      </Col>
-      <Col span={8}>
-        <Cardpad
-          loading={news.loading}
-          total={news.total}
-          onChange={news.onChange}
-        />
-      </Col>
-      <Col span={8}>
-        <Cardpad
-          loading={news.loading}
-          total={news.total}
-          onChange={news.onChange}
-        />
-      </Col>
+      {CardpadElement}
     </Row>
   );
 };
 
 News.PropTypes = {
-  loading: React.PropTypes.bool,
-  total: React.PropTypes.number,
-  onChange: React.PropTypes.func,
+  origin: React.PropTypes.object,
 };
 
 function mapStateToProps(state) {

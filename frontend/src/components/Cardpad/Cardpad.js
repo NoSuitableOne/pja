@@ -2,27 +2,37 @@ import React from 'react';
 import { Card, Pagination } from 'antd';
 import styles from './Cardpad.css';
 
-function Cardpad({ loading, total, onChange }) {
+function Cardpad({ loading, passage, title, total, dispatch }) {
+  const cardElement = passage.map((ele, idx) => (
+    <li key={idx}>
+      <Card
+        className={styles.card}
+        hoverable
+        title={ele.title}
+        loading={loading}
+        extra={<a href="counter">More</a>}
+      >
+        <p>Card content {idx}</p>
+        <p>Card content {idx}</p>
+        <p>Card content {idx}</p>
+      </Card>
+    </li>
+  ));
+
+  function onPageChange(page) {  // eslint-disable-line
+    dispatch({ type: 'news/pageTurn' });
+  }
+
   return (
     <div className={styles.cardpad}>
       <div className={styles.cardpadHead}>
-        pppp
+        {title}
       </div>
-      <Card className={styles.card} hoverable title="Card title" loading={loading} extra={<a href="counter">More</a>}>
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </Card>
-      <Card className={styles.card} hoverable title="Card title" loading={loading} extra={<a href="counter">More</a>}>
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </Card>
-      <Card className={styles.card} hoverable title="Card title" loading={loading} extra={<a href="counter">More</a>}>
-        <p>Card content</p>
-        <p>Card content</p>
-        <p>Card content</p>
-      </Card>
+      <div>
+        <ul>
+          {cardElement}
+        </ul>
+      </div>
       <div>
         <Pagination
           size="small"
@@ -30,7 +40,7 @@ function Cardpad({ loading, total, onChange }) {
           defaultCurrent={1}
           pageSize={3}
           total={total}
-          onChange={onChange}
+          onChange={onPageChange}
         />
       </div>
     </div>
@@ -39,8 +49,8 @@ function Cardpad({ loading, total, onChange }) {
 
 Cardpad.propTypes = {
   loading: React.PropTypes.bool,
+  title: React.PropTypes.string,
   total: React.PropTypes.number,
-  onChange: React.PropTypes.func,
 };
 
 export default Cardpad;

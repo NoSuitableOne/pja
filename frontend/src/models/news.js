@@ -1,20 +1,76 @@
+import { service as newsService } from '../services/news';
+
 export default {
 
   namespace: 'news',
 
   state: {
-    loading: true,
-    total: 3,
-    onChange: (page) => {
-      console.log(page); // eslint-disable-line
-    },
+    origin: [
+      {
+        url: 'csdn',
+        title: 'csdn news',
+        total: 0,
+        state: {
+          loading: true,
+        },
+        passage: [
+          {
+            title: 'passage title 1',
+          },
+          {
+            title: 'passage title 2',
+          },
+          {
+            title: 'passage title 3',
+          },
+        ],
+      },
+      {
+        url: 'cnblogs',
+        title: 'cnblogs news',
+        total: 0,
+        state: {
+          loading: true,
+        },
+        passage: [
+          {
+            title: 'passage title 1',
+          },
+          {
+            title: 'passage title 2',
+          },
+          {
+            title: 'passage title 3',
+          },
+        ],
+      },
+      {
+        url: 'segmentfault',
+        title: 'segmentfault news',
+        total: 0,
+        state: {
+          loading: true,
+        },
+        passage: [
+          {
+            title: 'passage title 1',
+          },
+          {
+            title: 'passage title 2',
+          },
+          {
+            title: 'passage title 3',
+          },
+        ],
+      },
+    ],
   },
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
       history.listen(({ pathname }) => {
         if (pathname === '/news') {
-          dispatch({ type: 'load' });
+          dispatch({ type: 'fetch' });
         }
       });
     },
@@ -22,21 +78,28 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      // yield put({ type: 'save' });
+      const { data } = yield call(newsService);
+      if (data.state) {
+        yield put({
+          type: 'load',
+          payload: {
+            data,
+          },
+        });
+      }
     },
   },
 
   reducers: {
-    load(state) {
+    load(state, { payload: { data } }) {
       return {
         ...state,
-        loading: false,
+        origin: data.data.origin,
       };
     },
-    setpage(state, action) {
+    pageTurn(state, action) { // eslint-disable-line
       return {
         ...state,
-        ...action.payload,
       };
     },
   },
