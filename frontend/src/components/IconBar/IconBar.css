@@ -1,20 +1,27 @@
-#logo {
+#iconBar {
   height: 100%;
   display: inline-block;
-  margin-right: 20px;
-  background: url("../../assets/rss.gif") no-repeat;
-  background-size: contain;
+  padding: 12px 0;
+  font-size: 22px;
+  background-color: darkkhaki;
 }
 
-#iconBar {
-  padding: 12px 20px;
-  font-size: 22px;
+#logo {
+  height: 100%;
+  width: 40px;
+  display: inline-block;
+  margin: 0 20px;
+  background: url("../../assets/rss.gif") no-repeat;
+  background-size: contain;
 }
 
 #icons {
   width: 200px;
   height: 100%;
+  line-height: 24px;
+  font-size: 24px;
+  color: #08c;
   background-color: purple;
   display: inline-block;
-  margin-left: 60px;
+  margin: 0 20px;
 }

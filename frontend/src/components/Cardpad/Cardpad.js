@@ -10,11 +10,11 @@ function Cardpad({ loading, passage, title, total, dispatch }) {
         hoverable
         title={ele.title}
         loading={loading}
-        extra={<a href="counter">More</a>}
+        extra={<a href={ele.link}>More</a>}
       >
-        <p>Card content {idx}</p>
-        <p>Card content {idx}</p>
-        <p>Card content {idx}</p>
+        <p>{ele.author}</p>
+        <p>{ele.label}</p>
+        <p>{ele.support}</p>
       </Card>
     </li>
   ));
