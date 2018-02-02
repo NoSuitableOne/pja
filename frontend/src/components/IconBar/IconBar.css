@@ -1,6 +1,8 @@
 #iconBar {
   height: 100%;
-  display: inline-block;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   padding: 12px 0;
   font-size: 22px;
   background-color: darkkhaki;
@@ -15,13 +17,32 @@
   background-size: contain;
 }
 
-#icons {
+#user {
   width: 200px;
   height: 100%;
   line-height: 24px;
   font-size: 24px;
   color: #08c;
-  background-color: purple;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 20px 0 0;
+}
+
+.icons {
+  padding: 0 10px 0 10px;
+}
+
+.icons:hover {
+  cursor: pointer;
+}
+
+.operationIcons {
   display: inline-block;
-  margin: 0 20px;
+  padding: 0 10px 0 0;
+}
+
+.icon:hover {
+  color: #fff;
 }

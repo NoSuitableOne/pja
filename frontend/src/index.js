@@ -13,6 +13,7 @@ const app = dva();
 // app.model(require('./models/example'));
 app.model(require('./models/counter'));
 app.model(require('./models/news'));
+app.model(require('./models/icon'));
 
 // 4. Router
 app.router(require('./router'));
