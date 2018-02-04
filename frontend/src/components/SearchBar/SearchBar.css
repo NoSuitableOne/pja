@@ -2,3 +2,29 @@
   padding-left: 80px;
   padding-right: 20px;
 }
+
+.item {
+  font-size: 12px;
+  text-align: left;
+}
+
+.light {
+  composes: item;
+  text-align: center;
+}
+
+.languageSelect {
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.lightBtn {
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.questionIcon {
+  color: #0088cc;
+  margin-left: 8px;
+  display: inline-block;
+}

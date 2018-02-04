@@ -20,6 +20,7 @@ export default {
             author: 'authorcs1',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 2',
@@ -27,6 +28,7 @@ export default {
             author: 'authorcs2',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 3',
@@ -34,6 +36,7 @@ export default {
             author: 'authorcs3',
             label: '',
             support: 0,
+            favourite: false,
           },
         ],
       },
@@ -51,6 +54,7 @@ export default {
             author: 'authorcn1',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 2',
@@ -58,6 +62,7 @@ export default {
             author: 'authorcn2',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 3',
@@ -65,6 +70,7 @@ export default {
             author: 'authorcn3',
             label: '',
             support: 0,
+            favourite: false,
           },
         ],
       },
@@ -82,6 +88,7 @@ export default {
             author: 'authorsf1',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 2',
@@ -89,6 +96,7 @@ export default {
             author: 'authorsf2',
             label: '',
             support: 0,
+            favourite: false,
           },
           {
             title: 'passage title 3',
@@ -96,6 +104,7 @@ export default {
             author: 'authorsf3',
             label: '',
             support: 0,
+            favourite: false,
           },
         ],
       },

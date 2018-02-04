@@ -23,3 +23,20 @@
   margin: 10px auto;
   width: 40%;
 }
+
+.close {
+  color: red;
+  width: 16px;
+}
+
+.close:hover {
+  cursor: pointer;
+}
+
+.favourite {
+  color: gold;
+}
+
+.favourite:hover {
+  cursor: pointer;
+}

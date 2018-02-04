@@ -1,16 +1,23 @@
 import React from 'react';
-import { Card, Pagination } from 'antd';
+import { Card, Icon, Pagination } from 'antd';
 import styles from './Cardpad.css';
 
 function Cardpad({ loading, passage, title, total, dispatch }) {
+  function extraElement() {
+    return (
+      <span>
+        <Icon className={styles.close} type="close-circle" />
+      </span>
+    );
+  }
+
   const cardElement = passage.map((ele, idx) => (
     <li key={idx}>
       <Card
         className={styles.card}
-        hoverable
         title={ele.title}
         loading={loading}
-        extra={<a href={ele.link}>More</a>}
+        extra={extraElement()}
       >
         <p>{ele.author}</p>
         <p>{ele.label}</p>
