@@ -14,8 +14,8 @@ function SearchBar({ dispatch }) {
       <Row>
         <Col className={styles.item} span={8}>
           <span>语言</span>
-          <Dropdown className={styles.languageSelect} disabled overlay={menu}>
-            <Button>
+          <Dropdown disabled overlay={menu}>
+            <Button className={styles.languageSelect}>
               中文
               <Icon type="down" />
             </Button>

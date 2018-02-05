@@ -5,10 +5,11 @@ export default {
     data: {
       origin: [
         {
-          url: 'csdn',
-          title: 'csdn news',
+          key: 'csdn',
+          url: 'www.csdn.com',
           total: 12,
           state: {
+            current: 1,
             loading: false,
           },
           passage: [
@@ -36,10 +37,11 @@ export default {
           ],
         },
         {
-          url: 'cnblogs',
-          title: 'cnblogs news',
+          key: 'cnblogs',
+          url: 'www.cnblogs.com',
           total: 9,
           state: {
+            current: 1,
             loading: false,
           },
           passage: [
@@ -67,10 +69,11 @@ export default {
           ],
         },
         {
-          url: 'segmentfault',
-          title: 'segmentfault news',
+          key: 'segmentfault',
+          url: 'www.segmentfault.com',
           total: 15,
           state: {
+            current: 1,
             loading: false,
           },
           passage: [

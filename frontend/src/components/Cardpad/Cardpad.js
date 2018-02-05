@@ -2,12 +2,14 @@ import React from 'react';
 import { Card, Icon, Pagination } from 'antd';
 import styles from './Cardpad.css';
 
-function Cardpad({ loading, passage, title, total, dispatch }) {
+const Cardpad = ({ current, title, loading, onPageChange, passage, total }) => {
   function extraElement() {
     return (
-      <span>
-        <Icon className={styles.close} type="close-circle" />
-      </span>
+      <div className={styles.extra}>
+        <span className={styles.close}>
+          <Icon type="close-circle" />
+        </span>
+      </div>
     );
   }
 
@@ -26,14 +28,10 @@ function Cardpad({ loading, passage, title, total, dispatch }) {
     </li>
   ));
 
-  function onPageChange(page) {  // eslint-disable-line
-    dispatch({ type: 'news/pageTurn' });
-  }
-
   return (
     <div className={styles.cardpad}>
       <div className={styles.cardpadHead}>
-        {title}
+        {title} news
       </div>
       <div>
         <ul>
@@ -43,8 +41,9 @@ function Cardpad({ loading, passage, title, total, dispatch }) {
       <div>
         <Pagination
           size="small"
-          className={styles.pagination}
           defaultCurrent={1}
+          current={current}
+          className={styles.pagination}
           pageSize={3}
           total={total}
           onChange={onPageChange}
@@ -52,10 +51,13 @@ function Cardpad({ loading, passage, title, total, dispatch }) {
       </div>
     </div>
   );
-}
+};
 
 Cardpad.propTypes = {
+  current: React.PropTypes.number,
   loading: React.PropTypes.bool,
+  onPageChange: React.PropTypes.func,
+  passage: React.PropTypes.array,
   title: React.PropTypes.string,
   total: React.PropTypes.number,
 };

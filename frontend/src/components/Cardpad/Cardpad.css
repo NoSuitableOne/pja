@@ -10,6 +10,8 @@
 .cardpadHead {
   background-color: blue;
   height: 40px;
+  line-height: 40px;
+  text-align: center;
 }
 
 .card {
@@ -24,7 +26,17 @@
   width: 40%;
 }
 
+.extra {
+  height: 100%;
+  width: 20px;
+}
+
+.extra:hover .close {
+  display: block;
+}
+
 .close {
+  display: none;
   color: red;
   width: 16px;
 }

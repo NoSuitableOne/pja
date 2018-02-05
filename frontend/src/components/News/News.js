@@ -3,14 +3,26 @@ import { connect } from 'dva';
 import { Col, Row } from 'antd';
 import Cardpad from '../Cardpad/Cardpad';
 
-const News = ({ news }) => {
+const News = ({ news, dispatch }) => {
   const CardpadElement = (news.origin).map((ele, idx) => (
     <Col key={idx} span={8}>
       <Cardpad
+        current={ele.state.current}
         loading={ele.state.loading}
-        title={ele.title}
+        title={ele.key}
         total={ele.total}
         passage={ele.passage}
+        onPageChange={
+          (page) => {
+            const title = ele.key;
+            dispatch(
+              {
+                type: 'news/pageTurn',
+                payload: { page, title },
+              },
+            );
+          }
+        }
       />
     </Col>
   ));
@@ -22,9 +34,7 @@ const News = ({ news }) => {
   );
 };
 
-News.PropTypes = {
-  origin: React.PropTypes.object,
-};
+News.PropTypes = {};
 
 function mapStateToProps(state) {
   return {
