@@ -1,48 +1,28 @@
 #iconBar {
   height: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  padding: 12px 0;
-  font-size: 22px;
+  font-size: 24px;
   background-color: darkkhaki;
 }
 
 #logo {
-  height: 100%;
-  width: 40px;
-  display: inline-block;
-  margin: 0 20px;
+  height: 48px;
   background: url("../../assets/rss.gif") no-repeat;
   background-size: contain;
 }
 
 #user {
-  width: 200px;
   height: 100%;
   line-height: 24px;
-  font-size: 24px;
   color: #08c;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin: 0 20px 0 0;
+  text-align: center;
+  padding-top: 10px;
 }
 
-.icons {
-  padding: 0 10px 0 10px;
-}
-
-.icons:hover {
-  cursor: pointer;
-}
-
-.operationIcons {
-  display: inline-block;
-  padding: 0 10px 0 0;
+#icons {
+  color: #08c;
 }
 
 .icon:hover {
   color: #fff;
+  cursor: pointer;
 }

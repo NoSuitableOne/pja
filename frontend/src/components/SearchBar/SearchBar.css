@@ -1,15 +1,10 @@
 #searchBar {
-  padding-left: 80px;
-  padding-right: 20px;
+  background-color: pink;
+  min-width: 260px;
 }
 
 .item {
   font-size: 12px;
-  text-align: left;
-}
-
-.light {
-  composes: item;
   text-align: center;
 }
 
@@ -20,11 +15,10 @@
 
 .lightBtn {
   margin-left: 8px;
-  display: inline-block;
 }
 
 .questionIcon {
   color: #0088cc;
+  font-size: 14px;
   margin-left: 8px;
-  display: inline-block;
 }

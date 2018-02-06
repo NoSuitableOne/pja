@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'dva';
-import { Avatar, Icon } from 'antd';
+import { Avatar, Col, Icon, Row } from 'antd';
 import styles from './IconBar.css';
 
 const IconBar = ({ icon, dispatch }) => {
@@ -9,33 +9,43 @@ const IconBar = ({ icon, dispatch }) => {
   }
 
   return (
-    <div id={styles.iconBar} >
-      <div id={styles.logo} />
-      <div id={styles.user}>
+    <Row id={styles.iconBar} type="flex" align="middle">
+      <Col id={styles.logo} span={2} offset={1} />
+      <Col id={styles.user} span={2} offset={1}>
         <Avatar shape="circle" size="large" icon="user">USER</Avatar>
-        <div className={styles.icons} onMouseEnter={foldCtrl} onMouseLeave={foldCtrl}>
-          {
-            icon.fold
-            &&
-            <div>
-              <Icon className={styles.icon} type="right" />
-            </div>
-          }
+      </Col>
+      <Col id={styles.icons} span={10} offset={1}>
+        <Row>
           {
             !icon.fold
             &&
-            <div>
-              <span className={styles.operationIcons}>
-                <Icon className={styles.icon} type="setting" />
-                <Icon className={styles.icon} type="question-circle-o" />
-                <Icon className={styles.icon} type="logout" />
-              </span>
-              <Icon className={styles.icon} type="left" />
-            </div>
+            <Col>
+              <Icon className={styles.icon} type="right" onClick={foldCtrl} />
+            </Col>
           }
-        </div>
-      </div>
-    </div>
+          {
+            icon.fold
+            &&
+            <Col>
+              <Row gutter={16} justify="center">
+                <Col span={3}>
+                  <Icon className={styles.icon} type="setting" />
+                </Col>
+                <Col span={3}>
+                  <Icon className={styles.icon} type="question-circle-o" />
+                </Col>
+                <Col span={3}>
+                  <Icon className={styles.icon} type="logout" />
+                </Col>
+                <Col span={3} offset={1}>
+                  <Icon className={styles.icon} type="left" onClick={foldCtrl} />
+                </Col>
+              </Row>
+            </Col>
+          }
+        </Row>
+      </Col>
+    </Row>
   );
 };
 

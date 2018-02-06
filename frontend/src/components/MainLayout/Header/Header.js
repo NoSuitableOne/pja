@@ -6,12 +6,12 @@ const { Header } = Layout;
 
 function HeaderZone({ left, right }) {
   return (
-    <Header>
-      <Row id={styles.header} type="flex" justify="space-between" style={{ backgroundColor: 'yellow' }}>
-        <Col id={styles.iconBar} span={8} style={{ backgroundColor: 'green' }}>
+    <Header id={styles.header}>
+      <Row type="flex" justify="space-between">
+        <Col span={8}>
           {left}
         </Col>
-        <Col id={styles.searchBar} span={6} style={{ backgroundColor: 'pink' }}>
+        <Col span={4}>
           {right}
         </Col>
       </Row>
