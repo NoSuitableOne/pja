@@ -1,7 +1,8 @@
 #header {
   height: 100%;
-  width: 90vw;
+  width: 80vw;
   min-width: 720px;
   margin: 0 auto;
+  padding: 0;
   background-color: #fff;
 }

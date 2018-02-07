@@ -4,7 +4,7 @@ import styles from './MainLayout.css';
 import { HeaderZone } from './Header/Header';
 import { FooterZone } from './Footer/Footer';
 import IconBar from '../IconBar/IconBar';
-import { SearchBar } from '../SearchBar/SearchBar';
+import { UiBar } from '../UiBar/UiBar';
 
 const { Content } = Layout;
 
@@ -13,10 +13,12 @@ function MainLayout({ children }) {
     <div>
       <HeaderZone
         left={<IconBar />}
-        right={<SearchBar />}
+        right={<UiBar />}
       />
-      <Content id={styles.content}>
-        {children}
+      <Content id={styles.contentBg}>
+        <div className={styles.content}>
+          {children}
+        </div>
       </Content>
       <FooterZone />
     </div>

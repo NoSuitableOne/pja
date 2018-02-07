@@ -1,8 +1,8 @@
 import React from 'react';
 import { Button, Col, Dropdown, Menu, Icon, Row, Switch } from 'antd';
-import styles from './SearchBar.css';
+import styles from './UiBar.css';
 
-function SearchBar() {
+function UiBar() {
   const menu = (
     <Menu>
       <Menu.Item key="1">中文</Menu.Item>
@@ -34,4 +34,4 @@ function SearchBar() {
   );
 }
 
-export { SearchBar };
+export { UiBar };
