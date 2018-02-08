@@ -1,10 +1,10 @@
 import React from 'react';
 import { Layout } from 'antd';
 import styles from './MainLayout.css';
-import { HeaderZone } from './Header/Header';
-import { FooterZone } from './Footer/Footer';
+import HeaderZone from './Header/Header';
+import FooterZone from './Footer/Footer';
 import IconBar from '../IconBar/IconBar';
-import { UiBar } from '../UiBar/UiBar';
+import UiBar from '../UiBar/UiBar';
 
 const { Content } = Layout;
 

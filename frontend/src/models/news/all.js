@@ -19,7 +19,7 @@ export default {
     setup({ dispatch, history }) {  // eslint-disable-line
       history.listen(({ pathname }) => {
         if (pathname === '/news') {
-          dispatch({ type: 'fetch' });
+          dispatch({ type: 'fetch', payload: {} });
         }
       });
     },
@@ -27,14 +27,9 @@ export default {
 
   effects: {
     *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      const { data } = yield call(newsService);
+      const { data } = yield call(newsService, payload);
       if (data.state) {
-        yield put({
-          type: 'load',
-          payload: {
-            data,
-          },
-        });
+        yield put({ type: 'load', payload: { data } });
       }
     },
   },
@@ -44,29 +39,6 @@ export default {
       return {
         ...state,
         origin: data.data.origin,
-      };
-    },
-    pageTurn(state, action) { // eslint-disable-line
-      const { page, title } = action.payload;
-      const newOrigin = state.origin;
-      let idx;
-      switch (title) {
-        case 'csdn':
-          idx = 0;
-          break;
-        case 'cnblogs':
-          idx = 1;
-          break;
-        case 'segmentfault':
-          idx = 2;
-          break;
-        default:
-          return;
-      }
-      newOrigin[idx].state.current = page;
-      return {
-        ...state,
-        origin: newOrigin,
       };
     },
   },

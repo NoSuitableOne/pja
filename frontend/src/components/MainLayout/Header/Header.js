@@ -19,4 +19,4 @@ function HeaderZone({ left, right }) {
   );
 }
 
-export { HeaderZone };
+export default HeaderZone;

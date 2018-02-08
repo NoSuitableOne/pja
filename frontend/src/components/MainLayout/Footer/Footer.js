@@ -12,4 +12,4 @@ function FooterZone() {
   );
 }
 
-export { FooterZone };
+export default FooterZone;
