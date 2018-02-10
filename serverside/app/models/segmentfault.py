@@ -33,15 +33,20 @@ class SegmentfaultNews(db.Model):
             data.append(single_record)
         return data
 
-    def get_data(self, id):
+    def get_data(self, index):
         data = dict()
-        record = SegmentfaultNews.query.first()
+        record = SegmentfaultNews.query.filter_by(id=index).first()
         data['title'] = record.title
         data['label'] = record.label
         data['author'] = record.author
         data['support'] = record.support
         data['href'] = record.href
         return data
+
+    def get_data_pagination(self, page):
+        data = list()
+        records = SegmentfaultNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
+        print(str(records))
 
     def __repr__(self):
         return "<segmentfault: (title='%s', label='%s', author='%s', support='%s', href='%s')>" % (

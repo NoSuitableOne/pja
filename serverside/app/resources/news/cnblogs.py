@@ -14,6 +14,28 @@ class Cnblogs(Resource, News):
         self.url = urls.get('cnblogs')
         self.news = CnblogsNews()
 
-    def get(self, id=None):
+    def get(self):
+        res = self.query(self.news, self.url)
+        return jsonify(res)
+
+
+class Cnblogsid(Resource, News):
+    def __init__(self):
+        super(News, self).__init__()
+        self.url = urls.get('cnblogs')
+        self.news = CnblogsNews()
+
+    def get(self, id):
         res = self.query(self.news, self.url, id)
+        return jsonify(res)
+
+
+class Cnblogspage(Resource, News):
+    def __init__(self):
+        super(News, self).__init__()
+        self.url = urls.get('cnblogs')
+        self.news = CnblogsNews()
+
+    def get(self, page):
+        res = self.query(self.news, self.url, page)
         return jsonify(res)

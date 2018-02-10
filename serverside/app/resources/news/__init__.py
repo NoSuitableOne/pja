@@ -5,13 +5,15 @@
 class News:
     # {'url': 'csdn', 'status': 'ok', 'data': {['title': '', 'href': '', 'label': '', 'support': '', 'read_times': ''],
     # []}}
-    def query(self, news, original, id=None):
+    def query(self, news, original, id=None, page=None):
         res = dict()
         try:
-            if id is None:
-                res['data'] = news.get_data_all()
-            else:
+            if id is not None:
                 res['data'] = news.get_data(id)
+            elif page is not None:
+                res['data'] = news.get_data_pagination(id)
+            else:
+                res['data'] = news.get_data_all()
             res['url'] = original
             res['status'] = 'ok'
             return res, 200

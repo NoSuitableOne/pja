@@ -31,14 +31,19 @@ class CnblogsNews(db.Model):
             data.append(single_record)
         return data
 
-    def get_data(self, id):
+    def get_data(self, index):
         data = dict()
-        record = CnblogsNews.query.first()
+        record = CnblogsNews.query.filter_by(id=index).first()
         data['title'] = record.title
         data['author'] = record.author
         data['support'] = record.support
         data['href'] = record.href
         return data
+
+    def get_data_pagination(self, page):
+        data = list()
+        records = CnblogsNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
+        print(str(records))
 
     def __repr__(self):
         return "<cnblogs: (title='%s', author='%s', support='%s', href='%s')>" % (
