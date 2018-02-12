@@ -19,26 +19,41 @@ export default {
     setup({ dispatch, history }) {  // eslint-disable-line
       history.listen(({ pathname }) => {
         if (pathname === '/news') {
-          dispatch({ type: 'fetch', payload: {} });
+          dispatch({ type: 'fetchAll', payload: {} });
         }
       });
     },
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      const { data } = yield call(newsService, payload);
-      if (data.state) {
-        yield put({ type: 'load', payload: { data } });
-      }
+    *fetchAll({ payload }, { call, put }) {  // eslint-disable-line
+      const { ...data } = yield [
+        call(newsService, '/csdn'),
+        call(newsService, '/cnblogs'),
+        call(newsService, '/segmentfault'),
+      ];
+      console.log(data);
+      yield [
+        put({ type: 'load', payload: { data } }),
+      ];
+    },
+    *fetch({ payload }, { call, put }) {
+      const data = call(newsService, 'csdn');
+      yield put({ type: 'load', payload: { data } });
     },
   },
 
   reducers: {
     load(state, { payload: { data } }) {
+      const { 0: csdnData, 1: cnblogsData, 2: segmentfaultData } = data;
+      console.log(csdnData);
       return {
         ...state,
-        origin: data.data.origin,
+        origin: [
+          csdnData.data.origin,
+          cnblogsData.data.origin,
+          segmentfaultData.data.origin,
+        ],
       };
     },
   },
