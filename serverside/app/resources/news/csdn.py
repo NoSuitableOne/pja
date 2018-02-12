@@ -15,7 +15,7 @@ class Csdn(Resource, News):
         self.news = CsdnNews()
 
     def get(self):
-        res = self.query(self.news, self.url)
+        res = self.query(self.news)
         return jsonify(res)
 
 
@@ -26,7 +26,7 @@ class Csdnid(Resource, News):
         self.news = CsdnNews()
 
     def get(self, id):
-        res = self.query(self.news, self.url, id)
+        res = self.query(self.news, id)
         return jsonify(res)
 
 
@@ -37,5 +37,5 @@ class Csdnpage(Resource, News):
         self.news = CsdnNews()
 
     def get(self, page):
-        res = self.query(self.news, self.url, page)
+        res = self.query(self.news, page)
         return jsonify(res)

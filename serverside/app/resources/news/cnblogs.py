@@ -15,7 +15,7 @@ class Cnblogs(Resource, News):
         self.news = CnblogsNews()
 
     def get(self):
-        res = self.query(self.news, self.url)
+        res = self.query(self.news)
         return jsonify(res)
 
 
@@ -26,7 +26,7 @@ class Cnblogsid(Resource, News):
         self.news = CnblogsNews()
 
     def get(self, id):
-        res = self.query(self.news, self.url, id)
+        res = self.query(self.news, id)
         return jsonify(res)
 
 
@@ -37,5 +37,5 @@ class Cnblogspage(Resource, News):
         self.news = CnblogsNews()
 
     def get(self, page):
-        res = self.query(self.news, self.url, page)
+        res = self.query(self.news, page)
         return jsonify(res)

@@ -42,8 +42,15 @@ class CnblogsNews(db.Model):
 
     def get_data_pagination(self, page):
         data = list()
-        records = CnblogsNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
-        print(str(records))
+        pagination = CnblogsNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
+        for item in pagination.items:
+            record = dict()
+            record['title'] = item.title
+            record['author'] = item.author
+            record['support'] = item.support
+            record['href'] = item.href
+            data.append(record)
+        return data
 
     def __repr__(self):
         return "<cnblogs: (title='%s', author='%s', support='%s', href='%s')>" % (

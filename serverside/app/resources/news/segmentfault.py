@@ -15,7 +15,7 @@ class Segmentfault(Resource, News):
         self.news = SegmentfaultNews()
 
     def get(self):
-        res = self.query(self.news, self.url)
+        res = self.query(self.news)
         return jsonify(res)
 
 
@@ -26,7 +26,7 @@ class Segmentfaultid(Resource, News):
         self.news = SegmentfaultNews()
 
     def get(self, id):
-        res = self.query(self.news, self.url, id)
+        res = self.query(self.news, id)
         return jsonify(res)
 
 
@@ -37,5 +37,6 @@ class Segmentfaultpage(Resource, News):
         self.news = SegmentfaultNews()
 
     def get(self, page):
-        res = self.query(self.news, self.url, page)
+        print(page)
+        res = self.query(self.news, page)
         return jsonify(res)

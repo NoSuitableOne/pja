@@ -48,8 +48,17 @@ class CsdnNews(db.Model):
 
     def get_data_pagination(self, page):
         data = list()
-        records = CsdnNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
-        print(str(records))
+        pagination = CsdnNews.query.paginate(page=page, per_page=3, error_out=True, max_per_page=3)
+        for item in pagination.items:
+            record = dict()
+            record['title'] = item.title
+            record['label'] = item.label
+            record['read_times'] = item.read_times
+            record['author'] = item.author
+            record['support'] = item.support
+            record['href'] = item.href
+            data.append(record)
+        return data
 
     def __repr__(self):
         return "<csdn: (title='%s', label='%s', read_times='%s', support='%s', href='%s, author='%s)>" % (
