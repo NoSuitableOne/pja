@@ -2,13 +2,124 @@ export default {
   'GET /news/csdn': {
     state: true,
     msg: null,
-    origin: [
-      {
+    origin: {
+      key: 'csdn',
+      url: 'www.csdn.com',
+      total: 12,
+      state: {
+        current: 1,
+        loading: false,
+      },
+      passage: [
+        {
+          title: 'csdn title 1',
+          link: 'www.csdn.com/p1',
+          author: 'csauth1',
+          label: 'FE',
+          support: 101,
+        },
+        {
+          title: 'csdn title 2',
+          link: 'www.csdn.com/p2',
+          author: 'csauth2',
+          label: 'JAVA',
+          support: 254,
+        },
+        {
+          title: 'csdn title 3',
+          link: 'www.csdn.com/p3',
+          author: 'csauth3',
+          label: 'FE',
+          support: 95,
+        },
+      ],
+    },
+  },
+
+  'GET /news/cnblogs': {
+    state: true,
+    msg: null,
+    origin: {
+      key: 'cnblogs',
+      url: 'www.cnblogs.com',
+      total: 12,
+      state: {
+        current: 1,
+        loading: false,
+      },
+      passage: [
+        {
+          title: 'cnblogs title 1',
+          link: 'www.cnblogs.com/p1',
+          author: 'cbauth1',
+          label: 'FE',
+          support: 101,
+        },
+        {
+          title: 'cnblogs title 2',
+          link: 'www.cnblogs.com/p2',
+          author: 'cbauth2',
+          label: 'JAVA',
+          support: 254,
+        },
+        {
+          title: 'cnblogs title 3',
+          link: 'www.cnblogs.com/p3',
+          author: 'cbauth3',
+          label: 'FE',
+          support: 95,
+        },
+      ],
+    },
+  },
+
+  'GET /news/segmentfault': {
+    state: true,
+    msg: null,
+    origin: {
+      key: 'segmentfault',
+      url: 'www.segmentfault.com',
+      total: 15,
+      state: {
+        current: 1,
+        loading: false,
+      },
+      passage: [
+        {
+          title: 'segmentfault title 1',
+          link: 'www.segmentfault.com/p1',
+          author: 'sfauth1',
+          label: 'Security',
+          support: 2177,
+        },
+        {
+          title: 'segmentfault title 2',
+          link: 'www.segmentfault.com/p2',
+          author: 'sfauth2',
+          label: 'iOS',
+          support: 655,
+        },
+        {
+          title: 'segmentfault title 3',
+          link: 'www.segmentfault.com/p3',
+          author: 'sfauth3',
+          label: 'VR',
+          support: 363,
+        },
+      ]
+    }
+  },
+
+  'GET /news/csdn/:page': {
+    state: true,
+    msg: null,
+    data: {
+      origin: {
         key: 'csdn',
         url: 'www.csdn.com',
         total: 12,
         state: {
-          current: 1,
+          current: 2,
           loading: false,
         },
         passage: [
@@ -35,19 +146,19 @@ export default {
           },
         ],
       },
-    ]
+    },
   },
 
-  'GET /news/cnblogs': {
+  'GET /news/cnblogs/:page': {
     state: true,
     msg: null,
-    origin: [
-      {
+    data: {
+      origin: {
         key: 'cnblogs',
         url: 'www.cnblogs.com',
         total: 12,
         state: {
-          current: 1,
+          current: 2,
           loading: false,
         },
         passage: [
@@ -74,33 +185,33 @@ export default {
           },
         ],
       },
-    ]
+    },
   },
 
-  'GET /news/segmentfault': {
+  'GET /news/segmentfault/:page': {
     state: true,
     msg: null,
-    origin: [
-      {
+    data: {
+      origin: {
         key: 'segmentfault',
         url: 'www.segmentfault.com',
-        total: 15,
+        total: 12,
         state: {
-          current: 1,
+          current: 2,
           loading: false,
         },
         passage: [
           {
             title: 'segmentfault title 1',
             link: 'www.segmentfault.com/p1',
-            author: 'sfauth1',
+            author: 'sfauth3',
             label: 'Security',
             support: 2177,
           },
           {
             title: 'segmentfault title 2',
             link: 'www.segmentfault.com/p2',
-            author: 'sfauth2',
+            author: 'sfauth3',
             label: 'iOS',
             support: 655,
           },
@@ -111,131 +222,8 @@ export default {
             label: 'VR',
             support: 363,
           },
-        ]
-      }
-    ],
-  },
-
-  'GET /news/csdn/:page': {
-    state: true,
-    msg: null,
-    data: {
-      origin: [
-        {
-          key: 'csdn',
-          url: 'www.csdn.com',
-          total: 12,
-          state: {
-            current: 2,
-            loading: false,
-          },
-          passage: [
-            {
-              title: 'csdn title 1',
-              link: 'www.csdn.com/p1',
-              author: 'csauth1',
-              label: 'FE',
-              support: 101,
-            },
-            {
-              title: 'csdn title 2',
-              link: 'www.csdn.com/p2',
-              author: 'csauth2',
-              label: 'JAVA',
-              support: 254,
-            },
-            {
-              title: 'csdn title 3',
-              link: 'www.csdn.com/p3',
-              author: 'csauth3',
-              label: 'FE',
-              support: 95,
-            },
-          ],
-        },
-      ],
-    },
-  },
-
-  'GET /news/cnblogs/:page': {
-    state: true,
-    msg: null,
-    data: {
-      origin: [
-        {
-          key: 'cnblogs',
-          url: 'www.cnblogs.com',
-          total: 12,
-          state: {
-            current: 2,
-            loading: false,
-          },
-          passage: [
-            {
-              title: 'cnblogs title 1',
-              link: 'www.cnblogs.com/p1',
-              author: 'cbauth1',
-              label: 'FE',
-              support: 101,
-            },
-            {
-              title: 'cnblogs title 2',
-              link: 'www.cnblogs.com/p2',
-              author: 'cbauth2',
-              label: 'JAVA',
-              support: 254,
-            },
-            {
-              title: 'cnblogs title 3',
-              link: 'www.cnblogs.com/p3',
-              author: 'cbauth3',
-              label: 'FE',
-              support: 95,
-            },
-          ],
-        },
-      ],
-    },
-  },
-
-  'GET /news/segmentfault/:page': {
-    state: true,
-    msg: null,
-    data: {
-      origin: [
-        {
-          key: 'segmentfault',
-          url: 'www.segmentfault.com',
-          total: 12,
-          state: {
-            current: 2,
-            loading: false,
-          },
-          passage: [
-            {
-              title: 'segmentfault title 1',
-              link: 'www.segmentfault.com/p1',
-              author: 'sfauth3',
-              label: 'Security',
-              support: 2177,
-            },
-            {
-              title: 'segmentfault title 2',
-              link: 'www.segmentfault.com/p2',
-              author: 'sfauth3',
-              label: 'iOS',
-              support: 655,
-            },
-            {
-              title: 'segmentfault title 3',
-              link: 'www.segmentfault.com/p3',
-              author: 'sfauth3',
-              label: 'VR',
-              support: 363,
-            },
-          ],
-        },
-      ],
+        ],
+      },
     },
   },
 

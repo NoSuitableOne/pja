@@ -18,7 +18,7 @@ const News = ({ news, dispatch }) => {
             dispatch(
               {
                 type: 'news/fetch',
-                payload: { page, url },
+                payload: { url },
               },
             );
           }

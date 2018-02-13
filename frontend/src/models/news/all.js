@@ -32,21 +32,19 @@ export default {
         call(newsService, '/cnblogs'),
         call(newsService, '/segmentfault'),
       ];
-      console.log(data);
       yield [
-        put({ type: 'load', payload: { data } }),
+        put({ type: 'loadAll', payload: { data } }),
       ];
     },
-    *fetch({ payload }, { call, put }) {
-      const data = call(newsService, 'csdn');
-      yield put({ type: 'load', payload: { data } });
+    *fetch({ payload: url }, { call, put }) {
+      const { data: { data: origin } } = yield call(newsService, url.url);
+      yield put({ type: 'load', payload: { origin } });
     },
   },
 
   reducers: {
-    load(state, { payload: { data } }) {
+    loadAll(state, { payload: { data } }) {
       const { 0: csdnData, 1: cnblogsData, 2: segmentfaultData } = data;
-      console.log(csdnData);
       return {
         ...state,
         origin: [
@@ -54,6 +52,27 @@ export default {
           cnblogsData.data.origin,
           segmentfaultData.data.origin,
         ],
+      };
+    },
+    load(state, { payload: { origin } }) {
+      const newOrigin = state.origin;
+      switch (origin.origin.key) {
+        case 'csdn':
+          newOrigin[0] = origin.origin;
+          break;
+        case 'cnblogs':
+          newOrigin[1] = origin.origin;
+          break;
+        case 'segmentfault':
+          newOrigin[2] = origin.origin;
+          break;
+        default:
+          return;
+      }
+
+      return {
+        ...state,
+        origin: newOrigin,
       };
     },
   },
