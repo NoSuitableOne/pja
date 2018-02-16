@@ -14,11 +14,12 @@ const News = ({ news, dispatch }) => {
         passage={ele.passage}
         onPageChange={
           (page) => {
-            const url = `/${ele.key}/${page}`;
+            const origin = ele.key;
+            const url = `/${ele.key}`;
             dispatch(
               {
                 type: 'news/fetch',
-                payload: { url },
+                payload: { origin, page, url },
               },
             );
           }

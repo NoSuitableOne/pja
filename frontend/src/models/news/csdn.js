@@ -4,7 +4,7 @@ export default {
   total: 0,
   state: {
     current: 1,
-    loading: true,
+    loading: false,
   },
   passage: [
     {
