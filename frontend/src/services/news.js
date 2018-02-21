@@ -1,7 +1,7 @@
 import request from '../utils/request';
 
 function newsService(url) {
-  const targetUrl = `/news${url}`;
+  const targetUrl = `/api/news${url}`;
   console.log(targetUrl);
   return request(targetUrl);
 }

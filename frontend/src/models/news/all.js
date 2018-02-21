@@ -40,7 +40,7 @@ export default {
     },
     *fetch({ payload }, { call, put }) {
       yield put({ type: 'loadState', payload: { key: payload.origin } });
-      const { data: { data: passage, status } } = yield call(newsService, payload.url);
+      const { data: { 0: { data: passage, status } } } = yield call(newsService, payload.url);
       yield put({ type: 'load', payload: { key: payload.origin, passage, page: payload.page, status } });
       yield put({ type: 'loadState', payload: { key: payload.origin } });
     },
@@ -71,10 +71,11 @@ export default {
       };
     },
     loadAll(state, { payload: { data } }) {
+      console.log(data);
       const {
-        0: { data: { data: csdnData, status: csdnStatus } },
-        1: { data: { data: cnblogsData, status: cnblogsStatus } },
-        2: { data: { data: segmentfaultData, status: segmentfaultStatus } },
+        0: { data: { 0: { data: csdnData, status: csdnStatus } } },
+        1: { data: { 0: { data: cnblogsData, status: cnblogsStatus } } },
+        2: { data: { 0: { data: segmentfaultData, status: segmentfaultStatus } } },
       } = data;
       const newOrigin = state.origin;
       if (csdnStatus === 'ok') {

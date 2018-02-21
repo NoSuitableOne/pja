@@ -29,9 +29,11 @@ const News = ({ news, dispatch }) => {
   ));
 
   return (
-    <Row gutter={32}>
-      {CardpadElement}
-    </Row>
+    <div>
+      <Row gutter={32}>
+        {CardpadElement}
+      </Row>
+    </div>
   );
 };
 

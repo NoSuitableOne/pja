@@ -8,16 +8,19 @@ import UiBar from '../UiBar/UiBar';
 
 const { Content } = Layout;
 
-function MainLayout({ children }) {
+function MainLayout({ main, background }) {
   return (
     <div>
       <HeaderZone
         left={<IconBar />}
         right={<UiBar />}
       />
-      <Content id={styles.contentBg}>
-        <div className={styles.content}>
-          {children}
+      <Content id={styles.content}>
+        <main id={styles.main}>
+          {main}
+        </main>
+        <div id={styles.ctBg}>
+          {background}
         </div>
       </Content>
       <FooterZone />

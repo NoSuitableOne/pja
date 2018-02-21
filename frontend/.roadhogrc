@@ -13,5 +13,12 @@
         "transform-runtime"
       ]
     }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:5000/v1.0/",
+      "changeOrigin": true,
+      "pathRewrite": { "^/api" : "" }
+    }
   }
 }

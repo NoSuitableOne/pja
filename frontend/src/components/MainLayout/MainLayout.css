@@ -1,12 +1,23 @@
-#contentBg {
+#content {
   display: flex;
   align-items: center;
   background-color: #ECECEC;
+  position: relative;
   height: 86vh;
   min-height: 680px;
 }
 
-.content {
+#ctBg {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+#main {
   min-width: 720px;
   width: 80vw;
   margin: auto;
