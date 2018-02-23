@@ -6,8 +6,8 @@ import NewsBg from '../../components/Background/Background';
 const NewsPage = () => {
   return (
     <MainLayout
-      main={<News />}
       background={<NewsBg />}
+      main={<News />}
     />
   );
 };

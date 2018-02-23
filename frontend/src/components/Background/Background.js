@@ -1,18 +1,19 @@
 import React from 'react';
-import { balls, drawBall } from './balls';
+import { drawBackground, drawCircle, drawRectangular } from './source';
 
 class NewsBg extends React.Component {
   componentDidMount() {
     const canvas = document.querySelector('#news-bg');
     const ctx = canvas.getContext('2d');
-    console.log(canvas.parentElement);
 
     canvas.width = window.innerWidth;
     canvas.height = 0.85 * window.innerHeight;
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      drawBall(canvas, ctx, balls);
+      drawBackground(canvas, ctx);
+      drawCircle(canvas, ctx);
+      drawRectangular(canvas, ctx);
       window.requestAnimationFrame(draw);
     }
     window.requestAnimationFrame(draw);
