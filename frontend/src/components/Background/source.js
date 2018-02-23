@@ -31,18 +31,24 @@ class Rectangular {
   }
 }
 
-const rectangular1 = new Rectangular(200, 600, 40);
-const rectangular2 = new Rectangular(800, 100, 60);
-const rectangular3 = new Rectangular(1500, 300, 20);
-const rectangular4 = new Rectangular(1800, 780, 40);
-const rectangulars = [rectangular1, rectangular2, rectangular3, rectangular4];
+function create(canvas) {
+  let circles;
+  let rectangulars;
 
-const circle1 = new Circle(20, 100, 100, 1);
-const circle2 = new Circle(450, 500, 20, 2);
-const circle3 = new Circle(750, 800, 200, 1);
-const circle4 = new Circle(1600, 60, 0, 1);
+  const rectangular1 = new Rectangular(0.1 * canvas.width, 0.3 * canvas.height, 40);
+  const rectangular2 = new Rectangular(0.4 * canvas.width, 0.6 * canvas.height, 60);
+  const rectangular3 = new Rectangular(0.65 * canvas.width, 0.25 * canvas.height, 80);
+  const rectangular4 = new Rectangular(0.95 * canvas.width, 0.85 * canvas.height, 40);
+  rectangulars = [rectangular1, rectangular2, rectangular3, rectangular4];
 
-const circles = [circle1, circle2, circle3, circle4];
+  const circle1 = new Circle(0.05 * canvas.width, 0.1 * canvas.height, 100, 1);
+  const circle2 = new Circle(0.2 * canvas.width, 0.7 * canvas.height, 20, 2);
+  const circle3 = new Circle(0.55 * canvas.width, 0.8 * canvas.height, 150, 1);
+  const circle4 = new Circle(0.9 * canvas.width, 0.1 * canvas.height, 0, 1);
+  circles = [circle1, circle2, circle3, circle4];
+
+  return { circles, rectangulars };
+}
 
 function drawBackground(canvas, ctx) {
   const gradient = ctx.createRadialGradient(0.5 * canvas.width, canvas.height, 0,
@@ -53,9 +59,9 @@ function drawBackground(canvas, ctx) {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-function drawCircle(canvas, ctx) {
+function drawCircle(circles, ctx) {
   circles.map((ele) => {
-    if ((ele.radius + ele.exv) > 200 || (ele.radius + ele.exv) < 0) {
+    if ((ele.radius + ele.exv) > 150 || (ele.radius + ele.exv) < 0) {
       ele.exv = -ele.exv;
     }
     ele.radius += ele.exv;
@@ -80,7 +86,7 @@ function drawBezierCurve(canvas, ctx) {
   ctx.stroke();
 }
 
-function drawRectangular(canvas, ctx) {
+function drawRectangular(rectangulars, ctx) {
   rectangulars.map((ele) => {
     ele.degree += ele.dv;
 
@@ -93,4 +99,4 @@ function drawRectangular(canvas, ctx) {
   });
 }
 
-export { drawBackground, drawCircle, drawRectangular };
+export { create, drawBackground, drawCircle, drawRectangular };
