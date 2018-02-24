@@ -3,6 +3,7 @@
 
 from app.constant import version
 from app.resources import spiderapi
+from app.resources import test
 from app.resources.news import cnblogs, csdn, segmentfault
 
 
@@ -18,5 +19,7 @@ def register_api(api):
     api.add_resource(segmentfault.Segmentfaultpage, '/' + version + '/news/segmentfault/<int:page>')
 
     api.add_resource(spiderapi.SpiderApi,  '/' + version + '/spider')
+
+    api.add_resource(test.Test,  '/' + version + '/test')
 
     return api

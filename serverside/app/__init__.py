@@ -2,7 +2,7 @@
 # _*_ coding:utf-8 _*_
 
 from flask import Flask
-from app.ext import db, api
+from app.ext import db, api, scheduler
 from app.resources.apimanager import register_api
 # from app.views.main.main import main
 
@@ -16,6 +16,8 @@ def create_app(config):
 
     register_api(api)
     api.init_app(app)
+
+    scheduler.init_app(app)
 
     # app.register_blueprint(main)
 
