@@ -16,12 +16,12 @@ function MainLayout({ main, background }) {
         right={<UiBar />}
       />
       <Content id={styles.content}>
-        <main id={styles.main}>
-          {main}
-        </main>
         <div id={styles.ctBg}>
           {background}
         </div>
+        <main id={styles.main}>
+          {main}
+        </main>
       </Content>
       <FooterZone />
     </div>

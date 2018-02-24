@@ -35,15 +35,15 @@ function create(canvas) {
   let circles;
   let rectangulars;
 
-  const rectangular1 = new Rectangular(0.1 * canvas.width, 0.3 * canvas.height, 40);
-  const rectangular2 = new Rectangular(0.4 * canvas.width, 0.6 * canvas.height, 60);
+  const rectangular1 = new Rectangular(0.05 * canvas.width, 0.3 * canvas.height, 40);
+  const rectangular2 = new Rectangular(0.35 * canvas.width, 0.6 * canvas.height, 60);
   const rectangular3 = new Rectangular(0.65 * canvas.width, 0.25 * canvas.height, 80);
   const rectangular4 = new Rectangular(0.95 * canvas.width, 0.85 * canvas.height, 40);
   rectangulars = [rectangular1, rectangular2, rectangular3, rectangular4];
 
   const circle1 = new Circle(0.05 * canvas.width, 0.1 * canvas.height, 100, 1);
-  const circle2 = new Circle(0.2 * canvas.width, 0.7 * canvas.height, 20, 2);
-  const circle3 = new Circle(0.55 * canvas.width, 0.8 * canvas.height, 150, 1);
+  const circle2 = new Circle(0.1 * canvas.width, 0.75 * canvas.height, 20, 2);
+  const circle3 = new Circle(0.85 * canvas.width, 0.9 * canvas.height, 150, 1);
   const circle4 = new Circle(0.9 * canvas.width, 0.1 * canvas.height, 0, 1);
   circles = [circle1, circle2, circle3, circle4];
 
