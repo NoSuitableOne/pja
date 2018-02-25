@@ -18,6 +18,7 @@ def create_app(config):
     api.init_app(app)
 
     scheduler.init_app(app)
+    scheduler.start()
 
     # app.register_blueprint(main)
 

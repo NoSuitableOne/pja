@@ -2,11 +2,11 @@
 # _*_ coding:utf-8 _*_
 
 from flask_restful import Resource
-from app.utils.scheduler import start_schedule
+from app.utils.scheduler import start_scheduler
 
 
 class Test(Resource):
 
     def get(self):
-        start_schedule()
+        start_scheduler()
         pass
