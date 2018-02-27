@@ -9,19 +9,19 @@ from app.models.cnblogs import CnblogsNews
 
 class Outputer(object):
 
-    def save_data(self, model_name, data):
+    def save_data(self, url_key, data):
         if data is None:
             return
         # print(data[data['table_name']])
-        record = select_model(model_name)
+        record = select_model(url_key)
         record.add_new_data(data[data['table_name']])
 
 
-def select_model(model_name):
+def select_model(url_key):
     model = {
         'csdn': CsdnNews(),
         'segmentfault': SegmentfaultNews(),
         'cnblogs': CnblogsNews(),
         'jejin': JuejinNews()
     }
-    return model[model_name]
+    return model[url_key]

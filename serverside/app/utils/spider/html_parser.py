@@ -16,8 +16,8 @@ class HtmlParser(object):
 
         return parsers.get(url_key)
 
-    # cndn data parser
-    def get_csdn_data(self, soup):
+    # csdn data parser
+    def get_csdn_data(self, soup, target_url):
         res_data = dict()
         res_data['table_name'] = 'csdn'
         res_data['csdn'] = []
@@ -36,7 +36,7 @@ class HtmlParser(object):
         return res_data
 
     # cnblogs data parser
-    def get_cnblogs_data(self, soup):
+    def get_cnblogs_data(self, soup, target_url):
         res_data = dict()
         res_data['table_name'] = 'cnblogs'
         res_data['cnblogs'] = []
@@ -53,18 +53,18 @@ class HtmlParser(object):
         return res_data
 
     # segmentfault data parser
-    def get_segmentfault_data(self, soup):
+    def get_segmentfault_data(self, soup, target_url):
         url_prifix = 'https://segmentfault.com'
 
         res_data = dict()
         res_data['table_name'] = 'segmentfault'
         res_data['segmentfault'] = []
 
-        target_node = soup.select('.news__list .news__item,.stream__item')
+        target_node = soup.select('.news-list .news-item,.stream__item')
         for node in target_node:
             record = dict()
             record['title'] = node.select('.news__item-title a')[0].get_text(strip=True)
-            record['label'] = node.select('.news__item-meta .ml10')[0].get_text(strip=True)
+            record['label'] = ''
             record['href'] = url_prifix + node.select('.news__item-title a')[0].get('href')
             record['support'] = int(node.select('.stream__item-zan-number')[0].get_text(strip=True))
             record['author'] = node.select('.news__item-meta .mr10')[0].get_text(strip=True)
@@ -76,12 +76,12 @@ class HtmlParser(object):
     def get_juejin_data(self, soup):
         pass
 
-    def parse(self, url_key, html_content):
+    def parse(self, url_key, target_url, html_content):
         if html_content is None:
             return
 
         soup = BeautifulSoup(html_content, 'html.parser')
         parser = self.data_parser_manage(url_key)
-        new_data = parser(soup)
+        new_data = parser(soup, target_url)
 
         return new_data

@@ -9,14 +9,13 @@ headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 class Downloader (object):
 
-    def download(self, url):
-        if url is None:
+    def download(self, target_url):
+        if target_url is None:
             return None
         else:
             try:
-                response = requests.get(url, stream=True, timeout=15, headers=headers)
+                response = requests.get(target_url, stream=True, timeout=15, headers=headers)
                 print(response.reason)
-
                 if response.status_code != 200:
                     print('-----status_code wrong----- s', response.status_code)
                     return None

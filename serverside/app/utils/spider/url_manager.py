@@ -4,11 +4,18 @@
 
 class UrlManager(object):
     def __init__(self):
-        self.urls = dict()
+        self.jobs = list()
 
-    def add_new_url(self, urls):
+    def deal_jobs(self, urls):
+        jobs = list()
+        for key, values in urls.items():
+            for value in values:
+                jobs.append({'key': key, 'url': value})
+        self.add_jobs(jobs)
+        return self.jobs
+
+    def add_jobs(self, urls):
         if urls is None:
             return
-        self.urls = urls
-        # print(self.new_urls)
-        return self.urls
+        self.jobs = urls
+        # print(self.urls)

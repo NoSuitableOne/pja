@@ -10,5 +10,5 @@ class SpiderApi(Resource):
 
     def get(self):
         spider = CreateSpider()
-        spider.craw(urls=urls)
+        spider.bootstrap(urls=urls)
         return {'msg': 'spider started'}

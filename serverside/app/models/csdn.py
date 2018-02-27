@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
+import hashlib
 from app.ext import db
 
 
@@ -13,11 +14,15 @@ class CsdnNews(db.Model):
     read_times = db.Column(db.Integer)
     support = db.Column(db.Integer, index=True)
     href = db.Column(db.String, nullable=False)
-    author = db.Column(db.String)
+    author = db.Column(db.String, nullable=False)
+    key = db.Column(db.String, nullable=True)
 
     def add_new_data(self, origin_data):
         for record in origin_data:
             data = parse_data(record)
+            if CsdnNews.query.filter_by(key=data.key).first() is not None:
+                print(data.key)
+                print('000')
             db.session.add(data)
         db.session.commit()
 
@@ -60,12 +65,18 @@ class CsdnNews(db.Model):
             data.append(record)
         return data
 
+    def delete_all(self):
+        records = CsdnNews.query.all()
+        db.session.delete(records)
+        db.session.commit()
+
     def __repr__(self):
         return "<csdn: (title='%s', label='%s', read_times='%s', support='%s', href='%s, author='%s)>" % (
             self.title, self.label, self.read_times, self.support, self.href, self.author)
 
 
 def parse_data(record):
+    key = hashlib.md5(record['title'].encode('utf-8')).hexdigest()
     data = CsdnNews(title=record['title'], href=record['href'], label=record['label'], support=record['support'],
-                    read_times=record['read_num'], author=record['author'])
+                    read_times=record['read_num'], author=record['author'], key=key)
     return data

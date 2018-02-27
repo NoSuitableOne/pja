@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
+from flask import current_app
 from app.utils.spider import url_manager, downloader, html_parser, outputer
 
 
@@ -11,15 +12,19 @@ class CreateSpider(object):
         self.parser = html_parser.HtmlParser()
         self.outputer = outputer.Outputer()
 
-    def craw(self, urls=None):
-        target_urls = self.url_manager.add_new_url(urls)
+    def bootstrap(self, urls=None):
+        jobs = self.url_manager.deal_jobs(urls)
 
-        for key in target_urls:
+        while len(jobs) > 0:
+            job = jobs.pop()
+            (url_key, target_url) = (job['key'], job['url'])
             try:
-                # print('download url s', target_urls[key])
-                html_content = self.downloader.download(target_urls[key])
-                new_data = self.parser.parse(key, html_content)
-                self.outputer.save_data(key, new_data)
+                # current_app.logger.info('download url s', target_urls[key])
+                html_content = self.downloader.download(target_url=target_url)
+                # print('finish download url')
+                new_data = self.parser.parse(url_key=url_key, html_content=html_content)
+                print('finish parse html content')
+                # self.outputer.save_data(url_key=url_key, data=new_data)
             except Exception as e:
                 print('crawing went error:' + str(e))
 
