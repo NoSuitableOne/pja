@@ -17,14 +17,16 @@ class CreateSpider(object):
 
         while len(jobs) > 0:
             job = jobs.pop()
+            print(job)
             (url_key, target_url) = (job['key'], job['url'])
             try:
+                pass
                 # current_app.logger.info('download url s', target_urls[key])
                 html_content = self.downloader.download(target_url=target_url)
                 # print('finish download url')
-                new_data = self.parser.parse(url_key=url_key, html_content=html_content)
-                print('finish parse html content')
-                # self.outputer.save_data(url_key=url_key, data=new_data)
+                new_data = self.parser.parse(target_url=target_url, url_key=url_key, html_content=html_content)
+                # print('finish parse html content')
+                self.outputer.save_data(url_key=url_key, data=new_data)
             except Exception as e:
                 print('crawing went error:' + str(e))
 

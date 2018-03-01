@@ -3,7 +3,7 @@
 
 import os
 from app import create_app
-from app.models import csdn, cnblogs, segmentfault
+from app.models import csdn, cnblogs, segmentfault, jobbole
 from config import configs
 from app.ext import db
 from flask_script import Manager, Shell
@@ -21,7 +21,7 @@ migrate = Migrate(app, db)
 
 def make_shell_context():
     return dict(app=app, db=db, csdn_news=csdn.CsdnNews, cnblogs_news=cnblogs.CnblogsNews,
-                segmentfault=segmentfault.SegmentfaultNews)
+                segmentfault=segmentfault.SegmentfaultNews, jobbole=jobbole.JobboleNews)
 
 manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)

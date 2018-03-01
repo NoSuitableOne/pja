@@ -5,6 +5,7 @@ from app.models.csdn import CsdnNews
 from app.models.segmentfault import SegmentfaultNews
 from app.models.juejin import JuejinNews
 from app.models.cnblogs import CnblogsNews
+from app.models.jobbole import JobboleNews
 
 
 class Outputer(object):
@@ -22,6 +23,7 @@ def select_model(url_key):
         'csdn': CsdnNews(),
         'segmentfault': SegmentfaultNews(),
         'cnblogs': CnblogsNews(),
-        'jejin': JuejinNews()
+        'jejin': JuejinNews(),
+        'jobbole': JobboleNews()
     }
     return model[url_key]

@@ -14,14 +14,15 @@ class CnblogsNews(db.Model):
     support = db.Column(db.Integer, index=True)
     href = db.Column(db.String, nullable=False)
     key = db.Column(db.String, nullable=True)
+    summary = db.Column(db.String, nullable=False)
 
     def add_new_data(self, origin_data):
         for record in origin_data:
             data = parse_data(record)
             if CnblogsNews.query.filter_by(title=data.key).first() is not None:
-                print('001')
-                print(data.key)
-            db.session.add(data)
+                print(data.title)
+            else:
+                db.session.add(data)
         db.session.commit()
 
     def get_data_all(self):
@@ -33,6 +34,7 @@ class CnblogsNews(db.Model):
             single_record['author'] = record.author
             single_record['support'] = record.support
             single_record['href'] = record.href
+            single_record['summary'] = record.summary
             data.append(single_record)
         return data
 
@@ -43,6 +45,7 @@ class CnblogsNews(db.Model):
         data['author'] = record.author
         data['support'] = record.support
         data['href'] = record.href
+        data['summary'] = record.summary
         return data
 
     def get_data_pagination(self, page):
@@ -54,6 +57,7 @@ class CnblogsNews(db.Model):
             record['author'] = item.author
             record['support'] = item.support
             record['href'] = item.href
+            record['summary'] = item.summary
             data.append(record)
         return data
 
@@ -63,12 +67,12 @@ class CnblogsNews(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return "<cnblogs: (title='%s', author='%s', support='%s', href='%s')>" % (
-            self.title, self.author, self.support, self.href)
+        return "<cnblogs: (title='%s', author='%s', support='%s', href='%s', summary='%s')>" % (
+            self.title, self.author, self.support, self.href, self.summary)
 
 
 def parse_data(record):
     key = hashlib.md5(record['title'].encode('utf-8')).hexdigest()
     data = CnblogsNews(title=record['title'], href=record['href'], support=record['support'],
-                       author=record['author'], key=key)
+                       author=record['author'], key=key, summary=record['summary'])
     return data

@@ -8,7 +8,6 @@ headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 
 class Downloader (object):
-
     def download(self, target_url):
         if target_url is None:
             return None
