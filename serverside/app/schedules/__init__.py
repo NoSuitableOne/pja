@@ -5,10 +5,6 @@ from app.utils.spider import CreateSpider
 from app.constant import urls
 
 
-def start_scheduler():
+def start_crawling():
     spider = CreateSpider()
-    spider.craw(urls)
-
-
-def test():
-    print('test every min')
+    spider.bootstrap(urls)

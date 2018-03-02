@@ -7,10 +7,6 @@ import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
-def job1(a, b):
-    print(str(a) + ' ' + str(b))
-
-
 class Config(object):
     # config class
     pass
@@ -29,12 +25,12 @@ class DevConfig(Config):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JOBS = [
         {
-            'id': 'crewer',
-            'func': 'app.utils.scheduler.__init__:start_scheduler',
+            'id': 'spider',
+            'func': 'app.schedules.__init__:start_crawling',
             'trigger': 'cron',
             'hour': 5,
-            'minute': 30,
-            'second': 30,
+            'minute': 50,
+            'second': 15,
         }
     ]
     SCHEDULER_API_ENABLE = True

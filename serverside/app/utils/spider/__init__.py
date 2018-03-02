@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-from flask import current_app
 from app.utils.spider import url_manager, downloader, html_parser, outputer
 
 
@@ -13,6 +12,7 @@ class CreateSpider(object):
         self.outputer = outputer.Outputer()
 
     def bootstrap(self, urls=None):
+
         jobs = self.url_manager.deal_jobs(urls)
 
         while len(jobs) > 0:

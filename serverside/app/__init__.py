@@ -13,6 +13,7 @@ def create_app(config):
     app.config.from_object(config)
 
     db.init_app(app)
+    db.app = app
 
     register_api(api)
     api.init_app(app)
