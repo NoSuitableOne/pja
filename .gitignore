@@ -5,3 +5,4 @@ TASKS
 /**/**/dist
 /**/__pycache__
 **.png
+/frontend/dist

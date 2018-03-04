@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-from flask import Flask
+from flask import Flask, render_template
 from app.ext import db, api, scheduler
 from app.resources.apimanager import register_api
-# from app.views.main.main import main
+# from app.views import main
 
 
 def create_app(config):
@@ -22,5 +22,8 @@ def create_app(config):
     scheduler.start()
 
     # app.register_blueprint(main)
+    @app.route('/')
+    def index():
+        return render_template('index.html')
 
     return app

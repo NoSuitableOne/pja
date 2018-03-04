@@ -34,6 +34,7 @@ class DevConfig(Config):
         }
     ]
     SCHEDULER_API_ENABLE = True
+    SSL_CONTEXT = "ssl_context_PJA"
 
 
 class TestConfig(Config):

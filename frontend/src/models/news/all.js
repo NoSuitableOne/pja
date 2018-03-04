@@ -1,6 +1,6 @@
 import { newsService } from '../../services/news';
 import csdn from './csdn';
-import cnblogs from './cnblogs';
+import jobbole from './jobbole';
 import segmentfault from './segmentfault';
 
 export default {
@@ -10,7 +10,7 @@ export default {
   state: {
     origin: [
       csdn,
-      cnblogs,
+      jobbole,
       segmentfault,
     ],
   },
@@ -30,7 +30,7 @@ export default {
       yield put({ type: 'loadState', payload: { key: 'all' } });
       const { ...data } = yield [
         call(newsService, '/csdn'),
-        call(newsService, '/cnblogs'),
+        call(newsService, '/jobbole'),
         call(newsService, '/segmentfault'),
       ];
       yield [
@@ -56,7 +56,7 @@ export default {
         case 'csdn':
           loadState[0].state.loading = !loadState[0].state.loading;
           break;
-        case 'cnblogs':
+        case 'jobbole':
           loadState[1].state.loading = !loadState[1].state.loading;
           break;
         case 'segmentfault':
@@ -74,7 +74,7 @@ export default {
       console.log(data);
       const {
         0: { data: { 0: { data: csdnData, status: csdnStatus } } },
-        1: { data: { 0: { data: cnblogsData, status: cnblogsStatus } } },
+        1: { data: { 0: { data: jobboleData, status: jobboleStatus } } },
         2: { data: { 0: { data: segmentfaultData, status: segmentfaultStatus } } },
       } = data;
       const newOrigin = state.origin;
@@ -82,9 +82,9 @@ export default {
         newOrigin[0].passage = csdnData.slice(0, 3);
         newOrigin[0].total = csdnData.length;
       }
-      if (cnblogsStatus === 'ok') {
-        newOrigin[1].passage = cnblogsData.slice(0, 3);
-        newOrigin[1].total = cnblogsData.length;
+      if (jobboleStatus === 'ok') {
+        newOrigin[1].passage = jobboleData.slice(0, 3);
+        newOrigin[1].total = jobboleData.length;
       }
       if (segmentfaultStatus === 'ok') {
         newOrigin[2].passage = segmentfaultData.slice(0, 3);
@@ -106,7 +106,7 @@ export default {
             newOrigin[0].state.current = page;
           }
           break;
-        case 'cnblogs':
+        case 'jobbole':
           if (status === 'ok') {
             newOrigin[1].passage = passage.slice(start, end);
             newOrigin[1].state.current = page;
