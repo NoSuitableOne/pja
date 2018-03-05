@@ -4,5 +4,7 @@ TASKS
 /**/**/node_modules
 /**/**/dist
 /**/__pycache__
-**.png
+/**.png
+/**.jpg
 /frontend/dist
+/support_info
