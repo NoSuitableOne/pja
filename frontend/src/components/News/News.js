@@ -24,6 +24,20 @@ const News = ({ news, dispatch }) => {
             );
           }
         }
+        onCardDelete={
+          (key) => {
+            const cardKey = ele.key;
+            dispatch(
+              {
+                type: 'news/delete',
+                payload: {
+                  passageKey: key,
+                  cardKey: cardKey,
+                },
+              },
+            );
+          }
+        }
       />
     </Col>
   ));

@@ -47,6 +47,11 @@ export default {
   },
 
   reducers: {
+    delete(state, { payload: { cardKey, passageKey } }) {
+      console.log(passageKey);
+      console.log(cardKey);
+      return state;
+    },
     loadState(state, { payload: key }) {
       const loadState = state.origin;
       switch (key.key) {
@@ -71,7 +76,6 @@ export default {
       };
     },
     loadAll(state, { payload: { data } }) {
-      console.log(data);
       const {
         0: { data: { 0: { data: csdnData, status: csdnStatus } } },
         1: { data: { 0: { data: jobboleData, status: jobboleStatus } } },

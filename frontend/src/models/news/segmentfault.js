@@ -14,6 +14,7 @@ export default {
       label: '',
       support: 0,
       favourite: false,
+      key: '9ki99jj',
     },
     {
       title: 'passage title 2',
@@ -22,6 +23,7 @@ export default {
       label: '',
       support: 0,
       favourite: false,
+      key: 'yt75u87',
     },
     {
       title: 'passage title 3',
@@ -30,6 +32,7 @@ export default {
       label: '',
       support: 0,
       favourite: false,
+      key: 'mt9mtt',
     },
   ],
 };

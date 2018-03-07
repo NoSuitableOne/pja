@@ -2,11 +2,11 @@ import React from 'react';
 import { Card, Icon, Pagination } from 'antd';
 import styles from './Cardpad.css';
 
-const Cardpad = ({ current, title, loading, onPageChange, passage, total }) => {
-  function extraElement() {
+const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage, total }) => {
+  function extraElement(key) {
     return (
       <div className={styles.extra}>
-        <span className={styles.close}>
+        <span className={styles.close} onClick={onCardDelete.bind(this, key)}>
           <Icon type="close-circle" />
         </span>
       </div>
@@ -19,7 +19,7 @@ const Cardpad = ({ current, title, loading, onPageChange, passage, total }) => {
         className={styles.card}
         title={ele.title}
         loading={loading}
-        extra={extraElement()}
+        extra={extraElement(ele.key)}
       >
         <p>{ele.author}</p>
         <p>{ele.label}</p>
