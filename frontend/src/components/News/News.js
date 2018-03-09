@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Col, Row } from 'antd';
 import Cardpad from '../Cardpad/Cardpad';
+import { setLocal } from '../../services/news';
 
 const News = ({ news, dispatch }) => {
   const CardpadElement = (news.origin).map((ele, idx) => (
@@ -26,14 +27,14 @@ const News = ({ news, dispatch }) => {
         }
         onCardDelete={
           (key) => {
-            const cardKey = ele.key;
+            const page = ele.state.current;
+            const origin = ele.key;
+            const url = `/${ele.key}`;
+            setLocal(key, JSON.stringify({ "delete": true }));
             dispatch(
               {
-                type: 'news/delete',
-                payload: {
-                  passageKey: key,
-                  cardKey: cardKey,
-                },
+                type: 'news/fetch',
+                payload: { origin, page, url },
               },
             );
           }

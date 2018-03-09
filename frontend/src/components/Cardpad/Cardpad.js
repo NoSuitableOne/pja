@@ -17,13 +17,12 @@ const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage,
     <li key={idx}>
       <Card
         className={styles.card}
-        title={ele.title}
+        title={<a href={ele.href}>{ele.title}</a>}
         loading={loading}
         extra={extraElement(ele.key)}
       >
-        <p>{ele.author}</p>
-        <p>{ele.label}</p>
-        <p>{ele.support}</p>
+        <p>{ele.summary}</p>
+        <p>{ele.author} {ele.label} {ele.support}</p>
       </Card>
     </li>
   ));
