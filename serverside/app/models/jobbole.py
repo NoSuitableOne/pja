@@ -37,6 +37,7 @@ class JobboleNews(db.Model):
             single_record['time'] = record.time
             single_record['summary'] = record.summary
             single_record['href'] = record.href
+            single_record['key'] = record.key
             data.append(single_record)
         return data
 
@@ -60,6 +61,7 @@ class JobboleNews(db.Model):
             record['time'] = item.time
             record['summary'] = item.summary
             record['href'] = item.href
+            record['key'] = item.key
             data.append(record)
         return data
 

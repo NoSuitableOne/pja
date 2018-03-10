@@ -41,6 +41,7 @@ class CsdnNews(db.Model):
             single_record['href'] = record.href
             single_record['author'] = record.author
             single_record['time'] = record.time
+            single_record['key'] = record.key
             data.append(single_record)
         return data
 
@@ -68,6 +69,7 @@ class CsdnNews(db.Model):
             record['support'] = item.support
             record['href'] = item.href
             record['time'] = item.time
+            record['key'] = item.key
             data.append(record)
         return data
 

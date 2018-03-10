@@ -39,6 +39,7 @@ class SegmentfaultNews(db.Model):
             single_record['support'] = record.support
             single_record['time'] = record.time
             single_record['href'] = record.href
+            single_record['key'] = record.key
 
             data.append(single_record)
         return data
@@ -65,6 +66,7 @@ class SegmentfaultNews(db.Model):
             record['support'] = item.support
             record['time'] = item.time
             record['href'] = item.href
+            record['key'] = item.key
             data.append(record)
         return data
 
