@@ -9,3 +9,9 @@ ul, li {
   padding: 0;
 }
 
+.clearfix:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+

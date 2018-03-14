@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Icon, Pagination } from 'antd';
+import { Card, Icon, Pagination, Row, Col } from 'antd';
 import styles from './Cardpad.css';
 
 const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage, total }) => {
@@ -17,16 +17,36 @@ const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage,
     <li key={idx}>
       <Card
         className={styles.card}
-        title={<a href={ele.href}>{ele.title}</a>}
+        bodyStyle={{ padding: '12px 24px 8px' }}
+        title={<a href={ele.href} title={ele.title}>{ele.title}</a>}
         loading={loading}
-        extra={extraElement(ele.key)}
       >
-        <p>{ele.summary}</p>
-        <p>{ele.author} {ele.label} {ele.support}</p>
+        <div className={styles.cardCt}>
+          <Row gutter={24}>
+            <Col span={20} className={styles.cardInfo}>
+              {ele.label && <p>标签： <span className={styles.label}>{ele.label}</span></p>}
+              {ele.summary &&
+              <div className={styles.summary}>
+                <p title={ele.summary}>内容简介： {ele.summary}</p>
+              </div>}
+              {!!ele.support && <p>获得的赞： <span>{ele.support}</span></p>}
+              {ele.author && <p><span>作者： {ele.author}</span></p>}
+              {ele.time && <p>发布时间： <span className={styles.time}>{ele.time}</span></p>}
+            </Col>
+            <Col span={4} className={styles.cardSetting}>
+              <div className={styles.cardSettingSwitch}>
+                <spqn><Icon type="down" /></spqn>
+                <div className={styles.cardBtns}>
+                  <p><span className={styles.cardLike}><Icon type="heart-o" /></span></p>
+                  <p><span className={styles.cardDelete}><Icon type="close-circle-o" /></span></p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
       </Card>
     </li>
   ));
-
   return (
     <div className={styles.cardpad}>
       <div className={styles.cardpadHead}>
@@ -39,6 +59,7 @@ const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage,
       </div>
       <div>
         <Pagination
+          simple
           size="small"
           defaultCurrent={1}
           current={current}

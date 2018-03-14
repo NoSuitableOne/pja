@@ -19,6 +19,54 @@
   margin: 5px auto;
 }
 
+.cardInfo {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.cardSetting {
+  color: #aaaaaa;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.cardIcon {
+  display: inline-block;
+  margin: 0 6px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cardSettingSwitch:hover {
+  cursor: pointer;
+}
+
+.cardSettingSwitch:hover .cardBtns {
+  display: block;
+}
+
+.cardBtns {
+  padding-top: 6px;
+  display: none;
+}
+
+.cardLike {
+  composes: cardIcon;
+}
+
+.cardLike:hover {
+  color: gold;
+}
+
+.cardDelete {
+  composes: cardIcon;
+}
+
+.cardDelete:hover {
+  color: red;
+}
+
 .pagination {
   margin: 10px auto;
   width: 40%;
@@ -33,20 +81,23 @@
   display: block;
 }
 
-.close {
-  display: none;
-  color: red;
-  width: 16px;
+.author {
+  color: #0088cc;
 }
 
-.close:hover {
-  cursor: pointer;
+.label {
+  background-color: #D8EBFF;
+  border-color: #71A9E0;
+  color: #2277da;
 }
 
-.favourite {
-  color: gold;
-}
-
-.favourite:hover {
-  cursor: pointer;
+.summary {
+  margin-bottom: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  height: 36px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
