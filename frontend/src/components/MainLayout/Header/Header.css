@@ -1,8 +1,10 @@
 #header {
   height: 100%;
-  width: 80vw;
   min-width: 720px;
+  background-color: #E3AB54;
+}
+
+.ct {
+  width: 80vw;
   margin: 0 auto;
-  padding: 0;
-  background-color: #fff;
 }

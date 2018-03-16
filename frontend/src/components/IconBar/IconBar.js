@@ -10,6 +10,7 @@ const IconBar = ({ icon, dispatch }) => {
     modalVisible = value;
   }
 
+// eslint-disable-next-line no-unused-vars
   const UserModel = () => (
     <Modal
       title="Vertically centered modal dialog"
@@ -30,9 +31,14 @@ const IconBar = ({ icon, dispatch }) => {
 
   return (
     <Row id={styles.iconBar} type="flex" align="middle">
-      <Col id={styles.logo} span={2} offset={1} />
-      <Col id={styles.user} span={2} offset={1}>
-        <Avatar shape="circle" size="large" icon="user">USER</Avatar>
+      <Col id={styles.logo} span={4} offset={1} />
+      <Col id={styles.userlogo} span={3} offset={1}>
+        <span>
+          <Avatar shape="circle" size="large" icon="user">USER</Avatar>
+        </span>
+      </Col>
+      <Col id={styles.username} span={4}>
+        <span>你好，游客！</span>
       </Col>
       <Col id={styles.icons} span={10} offset={1}>
         <Row>

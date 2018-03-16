@@ -1,10 +1,8 @@
 #content {
   display: flex;
   align-items: center;
-  background-color: #ECECEC;
   position: relative;
   height: 86vh;
-  min-height: 680px;
 }
 
 #ctBg {
@@ -18,7 +16,7 @@
 }
 
 #main {
-  min-width: 720px;
+  min-width: 1135px;
   width: 80vw;
   margin: auto;
 }

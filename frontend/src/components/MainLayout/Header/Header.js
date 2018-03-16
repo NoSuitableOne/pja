@@ -7,14 +7,16 @@ const { Header } = Layout;
 function HeaderZone({ left, right }) {
   return (
     <Header id={styles.header}>
-      <Row type="flex" justify="space-between">
-        <Col span={8}>
-          {left}
-        </Col>
-        <Col span={4}>
-          {right}
-        </Col>
-      </Row>
+      <div className={styles.ct}>
+        <Row type="flex" justify="space-between">
+          <Col span={8}>
+            {left}
+          </Col>
+          <Col span={4}>
+            {right}
+          </Col>
+        </Row>
+      </div>
     </Header>
   );
 }

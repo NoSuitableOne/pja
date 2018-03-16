@@ -1,7 +1,7 @@
 #iconBar {
+  min-width: 480px;
   height: 100%;
   font-size: 24px;
-  background-color: darkkhaki;
 }
 
 #logo {
@@ -10,19 +10,25 @@
   background-size: contain;
 }
 
-#user {
+#userlogo {
+  display: inline-block;
   height: 100%;
   line-height: 24px;
-  color: #08c;
-  text-align: center;
+  font-size: 24px;
   padding-top: 10px;
 }
 
+#username {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 1;
+}
+
 #icons {
-  color: #08c;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .icon:hover {
-  color: #fff;
+  color: rgba(255, 255, 255, 0.8);
   cursor: pointer;
 }

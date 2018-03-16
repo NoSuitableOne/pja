@@ -1,4 +1,4 @@
-const color = '#b5b9bd';
+const color = '#eee';
 
 class Circle {
   constructor(x, y, radius, exv) {
@@ -51,10 +51,9 @@ function create(canvas) {
 }
 
 function drawBackground(canvas, ctx) {
-  const gradient = ctx.createRadialGradient(0.5 * canvas.width, canvas.height, 0,
-    0.5 * canvas.width, canvas.height, 0.8 * canvas.height);
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 0.4);
   gradient.addColorStop(0, '#EABF7B');
-  gradient.addColorStop(1, '#F7E7CE');
+  gradient.addColorStop(0.6, '#F7E7CE');
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }

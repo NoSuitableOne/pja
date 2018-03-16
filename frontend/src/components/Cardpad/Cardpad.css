@@ -1,7 +1,8 @@
 .cardpad {
   box-sizing: border-box;
   height: 75vh;
-  min-height: 650px;
+  min-height: 635px;
+  min-width: 440px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -10,13 +11,48 @@
   height: 40px;
   line-height: 40px;
   text-align: center;
+  width: 85%;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.csdnHead {
+  composes: cardpadHead;
+  background-image: url("../../assets/csdn-logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #c92027;
+  color: #f7f7f7;
+}
+
+.jobboleHead {
+  composes: cardpadHead;
+  background-image: url("../../assets/jobbole-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #5c9fdf;
+  color: #f7f7f7;
+}
+
+.segmentfaultHead {
+  composes: cardpadHead;
+  background-image: url("../../assets/segmentfault-logo.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #009a61;
+  color: #f7f7f7;
 }
 
 .card {
   width: 85%;
   height: 20vh;
-  min-height: 180px;
+  min-height: 170px;
   margin: 5px auto;
+}
+
+.cardTitle {
+  color: #000c17;
 }
 
 .cardInfo {
@@ -86,9 +122,9 @@
 }
 
 .label {
-  background-color: #D8EBFF;
-  border-color: #71A9E0;
-  color: #2277da;
+  background-color: #C5C7C9;
+  border-color: #83888B;
+  color: #fff;
 }
 
 .summary {

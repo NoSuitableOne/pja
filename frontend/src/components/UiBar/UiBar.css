@@ -1,6 +1,7 @@
 #searchBar {
-  background-color: pink;
   min-width: 260px;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 200;
 }
 
 .item {
@@ -18,7 +19,6 @@
 }
 
 .questionIcon {
-  color: #0088cc;
   font-size: 14px;
   margin-left: 8px;
 }
