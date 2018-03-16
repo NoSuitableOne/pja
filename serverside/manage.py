@@ -10,7 +10,7 @@ from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
 # load config of app
-app_config = os.getenv('pja') or configs['DEV']
+app_config = os.getenv('pja_DEV') or configs['DEV']
 
 # create app
 app = create_app(app_config)

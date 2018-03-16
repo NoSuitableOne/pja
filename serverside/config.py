@@ -9,7 +9,20 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     # config class
-    pass
+    SECRET_KEY = ''
+    SQLALCHEMY_DATABASE_URI = ''
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    JOBS = [
+        {
+            'id': 'spider',
+            'func': 'app.schedules.__init__:start_crawling',
+            'trigger': 'cron',
+            'hour': 5,
+            'minute': 50,
+            'seconds': 15,
+        }
+    ]
+    SCHEDULER_API_ENABLE = True
 
 
 class ProductConfig(Config):
