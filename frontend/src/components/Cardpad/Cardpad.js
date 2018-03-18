@@ -4,13 +4,13 @@ import { Card, Icon, Pagination, Row, Col, Tooltip } from 'antd';
 import styles from './Cardpad.css';
 
 
-const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage, total }) => {
+const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passages, total }) => {
   const classname = {
     'csdn': styles.csdnHead,
     'jobbole': styles.jobboleHead,
     'segmentfault': styles.segmentfaultHead,
   };
-  const cardElement = passage.map((ele, idx) => (
+  const cardElement = passages.map((ele, idx) => (
     <li key={idx}>
       <Card
         className={styles.card}
@@ -39,6 +39,7 @@ const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage,
               {ele.time && <p>发布时间： <span className={styles.time}>{ele.time}</span></p>}
             </Col>
             <Col span={4} className={styles.cardSetting}>
+              {ele.title &&
               <div className={styles.cardSettingSwitch}>
                 <spqn><Icon type="down" /></spqn>
                 <div className={styles.cardBtns}>
@@ -50,6 +51,7 @@ const Cardpad = ({ current, title, loading, onPageChange, onCardDelete, passage,
                   </p>
                 </div>
               </div>
+              }
             </Col>
           </Row>
         </div>

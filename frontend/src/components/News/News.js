@@ -5,22 +5,21 @@ import Cardpad from '../Cardpad/Cardpad';
 import { setLocal } from '../../services/news';
 
 const News = ({ news, dispatch }) => {
-  const CardpadElement = (news.origin).map((ele, idx) => (
+  const CardpadElement = (news.display).map((ele, idx) => (
     <Col key={idx} span={8}>
       <Cardpad
         current={ele.state.current}
         loading={ele.state.loading}
         title={ele.key}
         total={ele.total}
-        passage={ele.passage}
+        passages={ele.passages}
         onPageChange={
-          (page) => {
-            const origin = ele.key;
-            const url = `/${ele.key}`;
+          (pageNum) => {
+            const kwd = ele.key;
             dispatch(
               {
-                type: 'news/fetch',
-                payload: { origin, page, url },
+                type: 'news/turnPage',
+                payload: { key: kwd, page: pageNum },
               },
             );
           }

@@ -1,7 +1,7 @@
-import { fetchNews } from '../../services/news';
-import csdn from './csdn';
-import jobbole from './jobbole';
-import segmentfault from './segmentfault';
+import { fetchNews, dealOriginData, originFilter } from '../../services/news';
+import { csdnOrigin, csdnDisplay } from './csdn';
+import { jobboleOrigin, jobboleDisplay } from './jobbole';
+import { segmentfaultOrigin, segmentfaultDisplay } from './segmentfault';
 
 export default {
 
@@ -9,9 +9,14 @@ export default {
 
   state: {
     origin: [
-      csdn,
-      jobbole,
-      segmentfault,
+      csdnOrigin,
+      jobboleOrigin,
+      segmentfaultOrigin,
+    ],
+    display: [
+      csdnDisplay,
+      jobboleDisplay,
+      segmentfaultDisplay,
     ],
   },
 
@@ -33,122 +38,127 @@ export default {
         call(fetchNews, '/jobbole'),
         call(fetchNews, '/segmentfault'),
       ];
-      yield [
-        put({ type: 'loadAll', payload: { data } }),
-      ];
+      yield put({ type: 'reassignOrigin', payload: { data } });
+      yield put({ type: 'reassignDisplay', payload: { key: 'all', page: 1 } });
       yield put({ type: 'loadingState', payload: { key: 'all' } });
     },
-    *fetch({ payload }, { call, put }) {
-      yield put({ type: 'loadingState', payload: { key: payload.origin } });
-      const { data: { 0: { data: passage, status } } } = yield call(fetchNews, payload.url);
-      yield put({ type: 'load', payload: { key: payload.origin, passage, page: payload.page, status } });
-      yield put({ type: 'loadingState', payload: { key: payload.origin } });
+    *turnPage({ payload: { key: kwd, page: pageNum } }, { put }) {
+      yield put({ type: 'loadingState', payload: { key: kwd } });
+      yield put({ type: 'reassignDisplay', payload: { key: kwd, page: pageNum } });
+      yield put({ type: 'loadingState', payload: { key: kwd } });
     },
   },
 
   reducers: {
-    loadingState(state, { payload: key }) {
-      const loadingState = state.origin;
-      switch (key.key) {
-        case 'all':
-          loadingState.map(ele => (ele.state.loading = !ele.state.loading)); // eslint-disable-line
-          break;
+
+    loadingState(state, { payload: { key: kwd } }) {
+      const newDisplay = state.display;
+
+      switch (kwd) {
         case 'csdn':
-          loadingState[0].state.loading = !loadingState[0].state.loading;
+          newDisplay[0].state.loading = !newDisplay[0].state.loading;
           break;
         case 'jobbole':
-          loadingState[1].state.loading = !loadingState[1].state.loading;
+          newDisplay[1].state.loading = !newDisplay[1].state.loading;
           break;
         case 'segmentfault':
-          loadingState[2].state.loading = !loadingState[2].state.loading;
+          newDisplay[2].state.loading = !newDisplay[2].state.loading;
+          break;
+        case 'all':
+          // eslint-disable-next-line no-param-reassign
+          newDisplay.map(ele => (ele.state.loading = !ele.state.loading));
           break;
         default:
           return;
       }
+
       return {
         ...state,
-        origin: loadingState,
+        display: newDisplay,
       };
     },
-    loadAll(state, { payload: { data } }) {
+
+    reassignOrigin(state, { payload: { data } }) {
       let {
         0: { data: { 0: { data: csdnData, status: csdnStatus } } }, // eslint-disable-line
         1: { data: { 0: { data: jobboleData, status: jobboleStatus } } }, // eslint-disable-line
         2: { data: { 0: { data: segmentfaultData, status: segmentfaultStatus } } }, // eslint-disable-line
       } = data;
       const newOrigin = state.origin;
-      if (csdnStatus === 'ok') {
-        csdnData = csdnData.filter((item) => {
-          return (localSetting(item));
-        });
-        newOrigin[0].passage = csdnData.slice(0, 3);
-        newOrigin[0].total = csdnData.length;
-      }
-      if (jobboleStatus === 'ok') {
-        jobboleData = jobboleData.filter((item) => {
-          return (localSetting(item));
-        });
-        newOrigin[1].passage = jobboleData.slice(0, 3);
-        newOrigin[1].total = jobboleData.length;
-      }
-      if (segmentfaultStatus === 'ok') {
-        segmentfaultData = segmentfaultData.filter((item) => {
-          return (localSetting(item));
-        });
-        newOrigin[2].passage = segmentfaultData.slice(0, 3);
-        newOrigin[2].total = segmentfaultData.length;
-      }
+      Object.assign(newOrigin[0], { passages: dealOriginData(csdnStatus, csdnData) });
+      Object.assign(newOrigin[1], { passages: dealOriginData(jobboleStatus, jobboleData) });
+      Object.assign(newOrigin[2],
+        { passages: dealOriginData(segmentfaultStatus, segmentfaultData) });
       return {
         ...state,
         origin: newOrigin,
       };
     },
-    load(state, { payload: { key, passage, page, status } }) {
-      const start = 3 * page - 3; // eslint-disable-line
-      const end = 3 * page;
-      const newOrigin = state.origin;
-      const filteredPassage = passage.filter((item) => {
-        return (localSetting(item));
-      });
-      switch (key) {
-        case 'csdn':
-          if (status === 'ok') {
-            newOrigin[0].passage = filteredPassage.slice(start, end);
-            newOrigin[0].state.current = page;
-            newOrigin[0].total = filteredPassage.length;
-          }
+
+    reassignDisplay(state, { payload: { key: kwd, page: pageNum } }) {
+      const { origin, newDisplay } = { origin: state.origin, newDisplay: state.display };
+      switch (kwd) {
+        case 'csdn': {
+          const { passages: filteredPassages, total: totalNum } =
+            originFilter(origin[0].passages, pageNum);
+          Object.assign(
+            newDisplay[0],
+            {
+              passages: filteredPassages,
+              total: totalNum,
+              state: { current: pageNum, loading: true },
+            },
+          );
           break;
-        case 'jobbole':
-          if (status === 'ok') {
-            newOrigin[1].passage = filteredPassage.slice(start, end);
-            newOrigin[1].state.current = page;
-            newOrigin[1].total = filteredPassage.length;
-          }
+        }
+        case 'jobbole': {
+          const { passages: filteredPassages, total: totalNum } =
+            originFilter(origin[1].passages, pageNum);
+          Object.assign(
+            newDisplay[1],
+            {
+              passages: filteredPassages,
+              total: totalNum,
+              state: { current: pageNum, loading: true },
+            },
+          );
           break;
-        case 'segmentfault':
-          if (status === 'ok') {
-            newOrigin[2].passage = filteredPassage.slice(start, end);
-            newOrigin[2].state.current = page;
-            newOrigin[2].total = filteredPassage.length;
+        }
+        case 'segmentfault': {
+          const { passages: filteredPassages, total: totalNum } =
+            originFilter(origin[2].passages, pageNum);
+          Object.assign(
+            newDisplay[2],
+            {
+              passages: filteredPassages,
+              total: totalNum,
+              state: { current: pageNum, loading: true },
+            },
+          );
+          break;
+        }
+        case 'all':
+          // eslint-disable-next-line no-plusplus
+          for (let i = 0; i < newDisplay.length; i++) {
+            const { passages: filteredPassages, total: totalNum } =
+              originFilter(origin[i].passages, pageNum);
+            Object.assign(
+              newDisplay[i],
+              {
+                passages: filteredPassages,
+                total: totalNum,
+                state: { current: pageNum, loading: true },
+              },
+            );
           }
           break;
         default:
           return;
       }
-
       return {
         ...state,
-        origin: newOrigin,
+        display: newDisplay,
       };
     },
   },
-
 };
-
-function localSetting(item) {
-  if (localStorage.getItem(item.key) && JSON.parse(localStorage.getItem(item.key)).delete) {
-    return false;
-  } else {
-    return true;
-  }
-}
