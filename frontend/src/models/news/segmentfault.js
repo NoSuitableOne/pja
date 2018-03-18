@@ -26,6 +26,7 @@ const segmentfaultDisplay = {
     current: 1,
     loading: false,
   },
+  status: 'ok',
 };
 
 export { segmentfaultOrigin, segmentfaultDisplay };

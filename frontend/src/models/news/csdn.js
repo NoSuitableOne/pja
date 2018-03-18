@@ -9,15 +9,15 @@ const csdnDisplay = {
   url: 'www.csdn.com',
   passages: [
     {
-      title: '',
+      title: null,
       href: '#',
     },
     {
-      title: '',
+      title: null,
       href: '#',
     },
     {
-      title: '',
+      title: null,
       href: '#',
     },
   ],
@@ -26,6 +26,7 @@ const csdnDisplay = {
     current: 1,
     loading: false,
   },
+  status: 'ok',
 };
 
 export { csdnOrigin, csdnDisplay };

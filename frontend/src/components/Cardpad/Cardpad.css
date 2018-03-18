@@ -51,6 +51,12 @@
   margin: 5px auto;
 }
 
+.virtualCard {
+  composes: card;
+  background-color: #fff;
+  padding: 12px 24px 8px;
+}
+
 .cardTitle {
   color: #000c17;
 }

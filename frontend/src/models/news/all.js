@@ -1,4 +1,4 @@
-import { fetchNews, dealOriginData, originFilter } from '../../services/news';
+import { fetchNews, originFilter } from '../../services/news';
 import { csdnOrigin, csdnDisplay } from './csdn';
 import { jobboleOrigin, jobboleDisplay } from './jobbole';
 import { segmentfaultOrigin, segmentfaultDisplay } from './segmentfault';
@@ -85,10 +85,9 @@ export default {
         2: { data: { 0: { data: segmentfaultData, status: segmentfaultStatus } } }, // eslint-disable-line
       } = data;
       const newOrigin = state.origin;
-      Object.assign(newOrigin[0], { passages: dealOriginData(csdnStatus, csdnData) });
-      Object.assign(newOrigin[1], { passages: dealOriginData(jobboleStatus, jobboleData) });
-      Object.assign(newOrigin[2],
-        { passages: dealOriginData(segmentfaultStatus, segmentfaultData) });
+      Object.assign(newOrigin[0], { passages: csdnData }, { status: csdnStatus });
+      Object.assign(newOrigin[1], { passages: jobboleData }, { status: jobboleStatus });
+      Object.assign(newOrigin[2], { passages: segmentfaultData }, { status: segmentfaultStatus });
       return {
         ...state,
         origin: newOrigin,
@@ -107,6 +106,7 @@ export default {
               passages: filteredPassages,
               total: totalNum,
               state: { current: pageNum, loading: true },
+              status: origin[0].status,
             },
           );
           break;
@@ -120,6 +120,7 @@ export default {
               passages: filteredPassages,
               total: totalNum,
               state: { current: pageNum, loading: true },
+              status: origin[1].status,
             },
           );
           break;
@@ -133,6 +134,7 @@ export default {
               passages: filteredPassages,
               total: totalNum,
               state: { current: pageNum, loading: true },
+              status: origin[2].status,
             },
           );
           break;
@@ -148,6 +150,7 @@ export default {
                 passages: filteredPassages,
                 total: totalNum,
                 state: { current: pageNum, loading: true },
+                status: origin[i].status,
               },
             );
           }

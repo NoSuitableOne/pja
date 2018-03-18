@@ -3,23 +3,14 @@ import request from '../utils/request';
 
 // http请求
 function fetchNews(url) {
-  // const targetUrl = `/${CONSTANT.version}/news${url}`;
-  const targetUrl = `/api/news${url}`;
+  const targetUrl = `/${CONSTANT.version}/news${url}`;
+  // const targetUrl = `/api/news${url}`;
   return request(targetUrl);
 }
 
 // 存储localStorage
 function setLocal(key, value) {
   localStorage.setItem(key, value);
-}
-
-// origin data加载
-function dealOriginData(status, data) {
-  if (status === 'ok') {
-    return data;
-  } else {
-    return data;
-  }
 }
 
 // filter origin data
@@ -48,4 +39,4 @@ function localSetting(item) {
   }
 }
 
-export { dealOriginData, fetchNews, originFilter, setLocal };
+export { fetchNews, originFilter, setLocal };

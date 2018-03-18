@@ -13,6 +13,7 @@ const News = ({ news, dispatch }) => {
         title={ele.key}
         total={ele.total}
         passages={ele.passages}
+        status={ele.status}
         onPageChange={
           (pageNum) => {
             const kwd = ele.key;
@@ -26,14 +27,13 @@ const News = ({ news, dispatch }) => {
         }
         onCardDelete={
           (key) => {
-            const page = ele.state.current;
-            const origin = ele.key;
-            const url = `/${ele.key}`;
+            const pageNum = ele.state.current;
+            const kwd = ele.key;
             setLocal(key, JSON.stringify({ "delete": true }));
             dispatch(
               {
-                type: 'news/fetch',
-                payload: { origin, page, url },
+                type: 'news/ressignDisplay',
+                payload: { key: kwd, page: pageNum },
               },
             );
           }

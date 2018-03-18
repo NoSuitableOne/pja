@@ -26,6 +26,7 @@ const jobboleDisplay = {
     current: 1,
     loading: false,
   },
+  status: 'ok',
 };
 
 export { jobboleOrigin, jobboleDisplay };
