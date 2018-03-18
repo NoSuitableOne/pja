@@ -10,7 +10,19 @@ function fetchNews(url) {
 
 // 存储localStorage
 function setLocal(key, value) {
-  localStorage.setItem(key, value);
+  if (value === 'delete') {
+    if (localStorage.getItem(key)) {
+      localStorage.removeItem(key);
+    }
+    localStorage.setItem(key, JSON.stringify({ "delete": true }));
+  }
+  if (value === 'favourite') {
+    if (localStorage.getItem(key)) {
+      localStorage.removeItem(key);
+    } else {
+      localStorage.setItem(key, JSON.stringify({ "favourite": true }));
+    }
+  }
 }
 
 // filter origin data
@@ -22,7 +34,7 @@ function originFilter(origin, page) {
 
   // eslint-disable-next-line prefer-const
   passages = origin.filter((item) => {
-    return localSetting(item);
+    return deleteFilter(item);
   });
   // eslint-disable-next-line prefer-const
   total = passages.length;
@@ -31,7 +43,7 @@ function originFilter(origin, page) {
   return { passages, total };
 }
 
-function localSetting(item) {
+function deleteFilter(item) {
   if (localStorage.getItem(item.key) && JSON.parse(localStorage.getItem(item.key)).delete) {
     return false;
   } else {

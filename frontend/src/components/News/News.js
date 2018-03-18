@@ -29,10 +29,23 @@ const News = ({ news, dispatch }) => {
           (key) => {
             const pageNum = ele.state.current;
             const kwd = ele.key;
-            setLocal(key, JSON.stringify({ "delete": true }));
+            setLocal(key, 'delete');
             dispatch(
               {
-                type: 'news/ressignDisplay',
+                type: 'news/turnPage',
+                payload: { key: kwd, page: pageNum },
+              },
+            );
+          }
+        }
+        onCardFavourite={
+          (key) => {
+            const pageNum = ele.state.current;
+            const kwd = ele.key;
+            setLocal(key, 'favourite');
+            dispatch(
+              {
+                type: 'news/turnPage',
                 payload: { key: kwd, page: pageNum },
               },
             );

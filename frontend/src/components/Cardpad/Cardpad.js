@@ -5,7 +5,8 @@ import styles from './Cardpad.css';
 
 
 const Cardpad =
-  ({ current, title, loading, onPageChange, onCardDelete, passages, total, status }) => {
+  ({ current, title, loading, onPageChange, onCardDelete, onCardFavourite,
+     passages, total, status }) => {
     const classname = {
       'csdn': styles.csdnHead,
       'jobbole': styles.jobboleHead,
@@ -44,7 +45,7 @@ const Cardpad =
                 <div className={styles.cardSettingSwitch}>
                   <spqn><Icon type="down" /></spqn>
                   <div className={styles.cardBtns}>
-                    <p>
+                    <p onClick={onCardFavourite.bind(this, ele.key)}>
                       <span className={styles.cardLike}><Icon type="heart-o" /></span>
                     </p>
                     <p onClick={onCardDelete.bind(this, ele.key)}>
@@ -93,7 +94,7 @@ const Cardpad =
             :
           (
             <div className={styles.virtualCard}>
-              <Alert message='发生了一个错误' description={status} type="error" />
+              <Alert message="发生了一个错误" description={status} type="error" />
             </div>
           )
         }
@@ -106,6 +107,7 @@ Cardpad.propTypes = {
   loading: React.PropTypes.bool,
   onPageChange: React.PropTypes.func,
   onCardDelete: React.PropTypes.func,
+  onCardFavourite: React.PropTypes.func,
   passages: React.PropTypes.array,
   status: React.PropTypes.string,
   title: React.PropTypes.string,
