@@ -1,4 +1,4 @@
-import { fetchNews, originFilter } from '../../services/news';
+import { fetchNews, originFilter, favouriteFilter } from '../../services/news';
 import { csdnOrigin, csdnDisplay } from './csdn';
 import { jobboleOrigin, jobboleDisplay } from './jobbole';
 import { segmentfaultOrigin, segmentfaultDisplay } from './segmentfault';
@@ -47,6 +47,12 @@ export default {
       yield put({ type: 'reassignDisplay', payload: { key: kwd, page: pageNum } });
       yield put({ type: 'loadingState', payload: { key: kwd } });
     },
+    *passagesFilter({ payload }, { put }) {
+      yield put({ type: 'loadingState', payload: { key: 'all' } });
+      yield put({ type: 'filterOrigin' });
+      yield put({ type: 'reassignDisplay', payload: { key: 'all', page: 1 } });
+      yield put({ type: 'loadingState', payload: { key: 'all' } });
+    },
   },
 
   reducers: {
@@ -88,6 +94,24 @@ export default {
       Object.assign(newOrigin[0], { passages: csdnData }, { status: csdnStatus });
       Object.assign(newOrigin[1], { passages: jobboleData }, { status: jobboleStatus });
       Object.assign(newOrigin[2], { passages: segmentfaultData }, { status: segmentfaultStatus });
+      return {
+        ...state,
+        origin: newOrigin,
+      };
+    },
+
+    filterOrigin(state) {
+      const newOrigin = state.origin;
+      // eslint-disable-next-line no-plusplus
+      for (let i = 0; i < newOrigin.length; i++) {
+        const passages = newOrigin[i].passages.filter(favouriteFilter);
+        Object.assign(
+          newOrigin[i],
+          {
+            passages,
+          },
+        );
+      }
       return {
         ...state,
         origin: newOrigin,

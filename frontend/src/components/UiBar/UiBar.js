@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { Button, Col, Dropdown, Menu, Icon, Row, Switch } from 'antd';
 import styles from './UiBar.css';
+import CONSTANT from '../../constant';
 
 function UiBar({ ui, dispatch }) {
   const menu = (
@@ -10,22 +11,28 @@ function UiBar({ ui, dispatch }) {
     </Menu>
   );
 
-  function lightSwitch() {
-    dispatch({ type: 'ui/light' });
+  function switchHandler() {
+    if (!ui.switch.state) {
+      dispatch({ type: 'ui/filterOn' });
+    } else {
+      dispatch({ type: 'ui/filterOff' });
+    }
   }
 
   return (
     <div id={styles.searchBar} >
       <Row type="flex" justify="center" align="middle">
-        <Col className={styles.item} span={6}>
-          <span>开灯</span>
-          <Switch className={styles.lightBtn} size="small" checked={ui.light} onChange={lightSwitch} />
+        <Col className={styles.item} span={6} push={2}>
+          <span>显示收藏</span>
+          <Switch
+            className={styles.switch}
+            size="small"
+            checked={ui.switch.state}
+            loading={ui.switch.isLoading}
+            onChange={switchHandler}
+          />
         </Col>
-        <Col className={styles.item} span={6}>
-          <span>帮助</span>
-          <Icon className={styles.questionIcon} type="question-circle-o" />
-        </Col>
-        <Col className={styles.item} span={10}>
+        <Col className={styles.item} span={7} push={2}>
           <span>语言</span>
           <Dropdown disabled overlay={menu}>
             <Button className={styles.languageSelect} size="small">
@@ -33,6 +40,9 @@ function UiBar({ ui, dispatch }) {
               <Icon type="down" />
             </Button>
           </Dropdown>
+        </Col>
+        <Col className={styles.item} span={4} push={2}>
+          <span>版本号 {CONSTANT.version}</span>
         </Col>
       </Row>
     </div>

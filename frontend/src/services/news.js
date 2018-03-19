@@ -39,6 +39,7 @@ function originFilter(origin, page) {
   // eslint-disable-next-line prefer-const
   total = passages.length;
   passages = passages.slice(start, end);
+  passages = markFavourite(passages);
 
   return { passages, total };
 }
@@ -51,4 +52,21 @@ function deleteFilter(item) {
   }
 }
 
-export { fetchNews, originFilter, setLocal };
+function favouriteFilter(item) {
+  if (localStorage.getItem(item.key) && JSON.parse(localStorage.getItem(item.key)).favourite) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function markFavourite(origin) {
+  // eslint-disable-next-line no-plusplus
+  for (let i = 0; i < origin.length; i++) {
+    (localStorage.getItem(origin[i].key) && JSON.parse(localStorage.getItem(origin[i].key)).favourite) ?
+      origin[i].favourite = true : origin[i].favourite = false;
+  }
+  return origin;
+}
+
+export { fetchNews, favouriteFilter, originFilter, setLocal };

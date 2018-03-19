@@ -3,7 +3,10 @@ export default {
   namespace: 'ui',
 
   state: {
-    light: true,
+    switch: {
+      state: false,
+      isLoading: false,
+    },
   },
 
   subscriptions: {
@@ -20,17 +23,35 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {  // eslint-disable-line
-      yield put({ type: 'save' });
+    *filterOn({ payload }, { call, put }) {  // eslint-disable-line
+      yield put({ type: 'switchLoading' });
+      yield put({ type: 'news/passagesFilter' });
+      yield put({ type: 'switchState' });
+      yield put({ type: 'switchLoading' });
+    },
+    *filterOff({ payload }, { call, put }) {  // eslint-disable-line
+      yield put({ type: 'switchLoading' });
+      yield put({ type: 'news/fetchAll' });
+      yield put({ type: 'switchState' });
+      yield put({ type: 'switchLoading' });
     },
   },
 
   reducers: {
-    light(state, action) {  // eslint-disable-line
-      const lightState = state.light;
+    switchState(state, action) {  // eslint-disable-line
+      const newSwitch = state.switch;
+      newSwitch.state = !newSwitch.state;
       return {
         ...state,
-        light: !lightState,
+        newSwitch,
+      };
+    },
+    switchLoading(state, action) {  // eslint-disable-line
+      const newSwitch = state.switch;
+      newSwitch.isLoading = !newSwitch.isLoading;
+      return {
+        ...state,
+        newSwitch,
       };
     },
   },

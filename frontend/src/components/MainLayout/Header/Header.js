@@ -12,7 +12,7 @@ function HeaderZone({ left, right }) {
           <Col span={8}>
             {left}
           </Col>
-          <Col span={4}>
+          <Col span={6}>
             {right}
           </Col>
         </Row>

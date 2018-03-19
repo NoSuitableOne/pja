@@ -46,10 +46,14 @@ const Cardpad =
                   <spqn><Icon type="down" /></spqn>
                   <div className={styles.cardBtns}>
                     <p onClick={onCardFavourite.bind(this, ele.key)}>
-                      <span className={styles.cardLike}><Icon type="heart-o" /></span>
+                      {
+                        ele.favourite ?
+                        (<span className={styles.favourite}><Icon type="heart" /></span>) :
+                        (<span className={styles.unfavourite}><Icon type="heart-o" /></span>)
+                      }
                     </p>
                     <p onClick={onCardDelete.bind(this, ele.key)}>
-                      <span className={styles.cardDelete}><Icon type="close-circle-o" /></span>
+                      <span className={styles.delete}><Icon type="close-circle-o" /></span>
                     </p>
                   </div>
                 </div>

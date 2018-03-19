@@ -73,7 +73,7 @@
   line-height: 1.2;
 }
 
-.cardIcon {
+.icon {
   display: inline-block;
   margin: 0 6px;
   font-size: 18px;
@@ -93,16 +93,21 @@
   display: none;
 }
 
-.cardLike {
-  composes: cardIcon;
+.unfavourite {
+  composes: icon;
 }
 
-.cardLike:hover {
+.unfavourite:hover {
   color: gold;
 }
 
-.cardDelete {
-  composes: cardIcon;
+.favourite {
+  composes: icon;
+  color: gold;
+}
+
+.delete {
+  composes: icon;
 }
 
 .cardDelete:hover {
