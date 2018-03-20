@@ -41,9 +41,9 @@ class DevConfig(Config):
             'id': 'spider',
             'func': 'app.schedules.__init__:start_crawling',
             'trigger': 'cron',
-            'hour': 5,
-            'minute': 50,
-            'second': 15,
+            'hour': 11,
+            'minute': 36,
+            'second': 50,
         }
     ]
     SCHEDULER_API_ENABLE = True

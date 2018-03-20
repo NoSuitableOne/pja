@@ -21,16 +21,14 @@ class SegmentfaultNews(db.Model):
         for record in origin_data:
             data = parse_data(record)
             if SegmentfaultNews.query.filter_by(key=data.key).first() is not None:
-                new_record = SegmentfaultNews.query.filter_by(key=data.key).first()
-                new_record.time = data.time
-                db.session.add(new_record)
+                continue
             else:
                 db.session.add(data)
         db.session.commit()
 
     def get_data_all(self):
         data = list()
-        records = SegmentfaultNews.query.all()
+        records = SegmentfaultNews.query.order_by(db.desc(SegmentfaultNews.time)).all()
         for record in records:
             single_record = dict()
             single_record['title'] = record.title

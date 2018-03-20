@@ -31,7 +31,7 @@ class CsdnNews(db.Model):
 
     def get_data_all(self):
         data = list()
-        records = CsdnNews.query.all()
+        records = CsdnNews.query.order_by(db.desc(CsdnNews.time)).all()
         for record in records:
             single_record = dict()
             single_record['title'] = record.title

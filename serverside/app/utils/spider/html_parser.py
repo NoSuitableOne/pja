@@ -4,6 +4,7 @@
 import re
 from bs4 import BeautifulSoup
 from app.constant import segmentfault_label, csdn_label, jobbole_label
+from app.utils.spider.support import csdn_time, segmentfault_time
 
 
 class HtmlParser(object):
@@ -36,7 +37,8 @@ class HtmlParser(object):
             record['support'] = int(node.select('.count')[0].get_text(strip=True))
             record['read_num'] = int(node.select('.read_num em')[0].get_text(strip=True))
             record['author'] = node.select('.right a')[0].get('href').split('/')[-1]
-            record['time'] = node.select('.list-inline li:nth-of-type(2)')[0].get_text(strip=True)
+            raw_time = node.select('.list-inline li:nth-of-type(2)')[0].get_text(strip=True)
+            record['time'] = csdn_time(raw_time=raw_time)
             res_data['csdn'].append(record)
 
         return res_data
@@ -75,7 +77,8 @@ class HtmlParser(object):
             record['title'] = node.select('.news__item-title a')[0].get_text(strip=True)
             record['label'] = label
             record['href'] = url_prifix + node.select('.news__item-title a')[0].get('href')
-            record['time'] = node.select('.news__item-meta span:nth-of-type(2)')[0].get_text(strip=True)
+            raw_time = node.select('.news__item-meta span:nth-of-type(2)')[0].get_text(strip=True)
+            record['time'] = segmentfault_time(raw_time=raw_time)
             record['support'] = int(node.select('.stream__item-zan-number')[0].get_text(strip=True))
             record['author'] = node.select('.news__item-meta a:nth-of-type(2)')[0].get_text(strip=True)
             res_data['segmentfault'].append(record)
@@ -90,17 +93,6 @@ class HtmlParser(object):
 
         label = jobbole_label.get(target_url)
         pattern = re.compile(r'\d{4}/\d{2}/\d{2}')
-
-        # target_node = soup.select('.list_con')
-        # for node in target_node:
-        #     record = dict()
-        #     record['title'] = node.select('.title h2 a')[0].get_text(strip=True)
-        #     record['label'] = label
-        #     record['href'] = node.select('.title h2 a')[0].get('href')
-        #     record['read_num'] = int(node.select('.read_num .num')[0].get_text(strip=True))
-        #     record['author'] = node.select('.list_userbar .name a')[0].get_text(strip=True)
-        #     record['time'] = node.select('.list_userbar .time a')[0].get_text(strip=True)
-        #     res_data['csdn'].append(record)
 
         target_node = soup.select('#archive .post')
         for node in target_node:

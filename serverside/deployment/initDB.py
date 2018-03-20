@@ -9,39 +9,43 @@ print("connect database success!")
 
 cursor = connect.cursor()
 cursor.executescript("""
-    create table csdn(
-        id INTEGER,
-		title TEXT,
-        label TEXT,
-        href BLOB,
-		author TEXT,
-		time TEXT,
-		key TEXT,
+    create table csdn (
+        id INTEGER NOT NULL,
+        title VARCHAR NOT NULL,
+        label VACHAR,
+        read_times INTEGER,
+        support INTEGER,
+        href BLOB NOT NULL,
+        author VARCHAR,
+        time TEXT,
+        "key" VARCHAR NOT NULL,
+        PRIMARY KEY (id)
     );
 
-    create table segmentfault(
-        id INTEGER,
-        title TEXT,
-        label TEXT,
-		author TEXT,
-		support INTEGER,
-		href BLOB,
-		time TEXT,
-		key TEXT,
+    create table segmentfault (
+        id INTEGER NOT NULL,
+        title VARCHAR NOT NULL,
+        label VARCHAR,
+        author VARCHAR,
+        support INTEGER,
+        href BLOB NOT NULL,
+        time VARCHAR,
+        "key" VARCHAR NOT NULL,
+        PRIMARY KEY (id)
     );
-	
-    create table jobbole(
-        id INTEGER,
-        title TEXT,
-        label TEXT,
-		time TEXT,
-		href BLOB,
-		summary TEXT,
-		key TEXT,
+    
+    create table jobbole (
+        id INTEGER NOT NULL,
+        title VARCHAR NOT NULL,
+        label VARCHAR,
+        time VARCHAR,
+        href BLOB NOT NULL,
+        summary VARCHAR,
+        "key" VARCHAR NOT NULL,
+        PRIMARY KEY (id)
    );
-   """)	
+   """)
 print("create tables success!")
 
 connect.commit()
 connect.close()
- 

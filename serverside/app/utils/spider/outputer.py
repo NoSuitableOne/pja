@@ -13,7 +13,7 @@ class Outputer(object):
     def save_data(self, url_key, data):
         if data is None:
             return
-        # print(data[data['table_name']])
+        print(data[data['table_name']])
         record = select_model(url_key)
         record.add_new_data(data[data['table_name']])
 
