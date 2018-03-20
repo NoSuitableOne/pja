@@ -3,8 +3,8 @@ import request from '../utils/request';
 
 // http请求
 function fetchNews(url) {
-  const targetUrl = `/${CONSTANT.version}/news${url}`;
-  // const targetUrl = `/api/news${url}`;
+  // const targetUrl = `/${CONSTANT.version}/news${url}`;
+  const targetUrl = `/api/news${url}`;
   return request(targetUrl);
 }
 

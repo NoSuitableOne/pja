@@ -20,7 +20,7 @@ function UiBar({ ui, dispatch }) {
   }
 
   return (
-    <div id={styles.searchBar} >
+    <div id={styles.barCt} >
       <Row type="flex" justify="center" align="middle">
         <Col className={styles.item} span={6} push={2}>
           <span>显示收藏</span>
