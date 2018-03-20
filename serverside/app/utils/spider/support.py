@@ -35,6 +35,7 @@ def segmentfault_time(raw_time):
         return time
     elif re.search(re.compile(r'\d{1,2}\u6708\d{1,2}\u65e5'), raw_time):
         mid = re.sub('\D', ',', raw_time).split(',')
-        time = '%s/%s/%s' % (str(year), str(mid[0]), str(mid[1]))
+        unformated_time = datetime.date(year, int(mid[0]), int(mid[1]))
+        time = unformated_time.strftime('%Y/%m/%d')
         # print('\u6708 \u65e5 ok')
         return time
