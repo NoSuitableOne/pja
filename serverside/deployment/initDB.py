@@ -12,7 +12,7 @@ cursor.executescript("""
     create table csdn (
         id INTEGER NOT NULL,
         title VARCHAR NOT NULL,
-        label VACHAR,
+        label VARCHAR,
         read_times INTEGER,
         support INTEGER,
         href BLOB NOT NULL,

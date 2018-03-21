@@ -5,12 +5,13 @@
 import os
 import sys
 import hashlib
+from app.constant import ForkNewsDB_db
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 sys.path.append(basedir + os.sep + '../')
 
-database_uri = 'sqlite:///' + os.path.join(basedir, '../db/ForkNewsDB.db')
+database_uri = 'sqlite:///' + os.path.join(basedir, ForkNewsDB_db)
 
 
 from config import configs

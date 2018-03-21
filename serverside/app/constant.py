@@ -175,3 +175,5 @@ jobbole_label = {
 }
 
 version = 'v1.0'
+
+ForkNewsDB_db = './db/ForkNewsDB.db'
