@@ -101,7 +101,7 @@ export default {
           "title": "linux\u4fdd\u6301ssh\u8fde\u63a5"
         },
       ],
-      "status": "nonono",
+      "status": "ok",
     },
     200
   ],

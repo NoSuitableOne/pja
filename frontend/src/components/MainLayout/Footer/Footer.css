@@ -4,5 +4,7 @@
   width: 100vw;
   height: 8vh;
   text-align: center;
-  background-color: #F7E7CE;
+  color: #fff;
+  font-weight: 500;
+  background-color: rgba(47,47,47,0.98);
 }

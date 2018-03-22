@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,array-callback-return,no-mixed-operators,no-param-reassign */
 const color = '#eee';
 
 class Circle {
@@ -39,12 +40,14 @@ function create(canvas) {
   const rectangular2 = new Rectangular(0.35 * canvas.width, 0.6 * canvas.height, 60);
   const rectangular3 = new Rectangular(0.65 * canvas.width, 0.25 * canvas.height, 80);
   const rectangular4 = new Rectangular(0.95 * canvas.width, 0.85 * canvas.height, 40);
+// eslint-disable-next-line prefer-const
   rectangulars = [rectangular1, rectangular2, rectangular3, rectangular4];
 
   const circle1 = new Circle(0.05 * canvas.width, 0.1 * canvas.height, 100, 1);
   const circle2 = new Circle(0.1 * canvas.width, 0.75 * canvas.height, 20, 2);
   const circle3 = new Circle(0.85 * canvas.width, 0.9 * canvas.height, 150, 1);
   const circle4 = new Circle(0.9 * canvas.width, 0.1 * canvas.height, 0, 1);
+// eslint-disable-next-line prefer-const
   circles = [circle1, circle2, circle3, circle4];
 
   return { circles, rectangulars };
@@ -93,7 +96,7 @@ function drawRectangular(rectangulars, ctx) {
     ctx.save();
     ctx.translate((ele.x + 0.5 * ele.len), (ele.y + 0.5 * ele.len));
     ctx.rotate(ele.degree);
-    ctx.fillRect(-0.5 * ele.len, -0.5 * ele.len, ele .len, ele.len);
+    ctx.fillRect(-0.5 * ele.len, -0.5 * ele.len, ele.len, ele.len);
     ctx.restore();
   });
 }

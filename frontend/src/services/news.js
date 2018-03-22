@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import CONSTANT from '../constant';
 import request from '../utils/request';
 
 // http请求
 function fetchNews(url) {
-  // const targetUrl = `/${CONSTANT.version}/news${url}`;
-  const targetUrl = `/api/news${url}`;
+  const targetUrl = `/${CONSTANT.version}/news${url}`;
+  // const targetUrl = `/api/news${url}`;
   return request(targetUrl);
 }
 
@@ -14,13 +15,13 @@ function setLocal(key, value) {
     if (localStorage.getItem(key)) {
       localStorage.removeItem(key);
     }
-    localStorage.setItem(key, JSON.stringify({ "delete": true }));
+    localStorage.setItem(key, JSON.stringify({ delete: true }));
   }
   if (value === 'favourite') {
     if (localStorage.getItem(key)) {
       localStorage.removeItem(key);
     } else {
-      localStorage.setItem(key, JSON.stringify({ "favourite": true }));
+      localStorage.setItem(key, JSON.stringify({ favourite: true }));
     }
   }
 }
@@ -63,6 +64,7 @@ function favouriteFilter(item) {
 function markFavourite(origin) {
   // eslint-disable-next-line no-plusplus
   for (let i = 0; i < origin.length; i++) {
+    // eslint-disable-next-line max-len,no-unused-expressions
     (localStorage.getItem(origin[i].key) && JSON.parse(localStorage.getItem(origin[i].key)).favourite) ?
       origin[i].favourite = true : origin[i].favourite = false;
   }
