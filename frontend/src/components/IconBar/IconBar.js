@@ -39,16 +39,16 @@ const IconBar = ({ icon, dispatch }) => {
 
   return (
     <Row id={styles.iconBar} type="flex" align="middle">
-      <Col id={styles.logo} span={3} />
-      <Col id={styles.userlogo} span={2}>
+      <Col id={styles.logo} xs={0} sm={0} md={0} lg={6} />
+      <Col id={styles.userlogo} xs={6} sm={4} md={4} lg={3} offset={1}>
         <span>
           <Avatar shape="circle" size="large" icon="user">USER</Avatar>
         </span>
       </Col>
-      <Col id={styles.username} span={5}>
+      <Col id={styles.username} xs={0} sm={0} md={8} lg={6}>
         <span>你好，游客！</span>
       </Col>
-      <Col id={styles.icons} span={10} >
+      <Col id={styles.icons} xs={12} sm={6} md={6} lg={4}>
         <Row>
           {
             !icon.fold
@@ -62,12 +62,12 @@ const IconBar = ({ icon, dispatch }) => {
             &&
             <Col>
               <Row gutter={8} justify="center">
-                <Col span={3}>
+                <Col xs={8} md={8} lg={6}>
                   <Dropdown overlay={menu} placement="bottomCenter" trigger={['click']}>
                     <Icon className={styles.icon} type="setting" />
                   </Dropdown>
                 </Col>
-                <Col span={3} offset={1}>
+                <Col xs={10} md={8} lg={6} offset={1}>
                   <Icon className={styles.icon} type="left" onClick={foldCtrl} />
                 </Col>
               </Row>

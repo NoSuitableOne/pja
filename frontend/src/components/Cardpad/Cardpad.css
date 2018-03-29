@@ -51,6 +51,10 @@
   margin: 5px auto;
 }
 
+.cardLoading {
+  padding: 0;
+}
+
 .virtualCard {
   composes: card;
   background-color: #fff;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Col, Layout, Row } from 'antd';
 import styles from './Footer.css';
 
 const { Footer } = Layout;
@@ -7,7 +7,15 @@ const { Footer } = Layout;
 function FooterZone() {
   return (
     <Footer id={styles.footer}>
-      <span>NoSuitableOne‘s product <a href="/#">NoSuitableOne@github.com</a></span>
+      <Row>
+        <Col xs={24} sm={24} md={24}>
+          <span>NoSuitableOne‘s product&nbsp;
+            <a href="https://github.com/NoSuitableOne/pja" target="_blank" rel="noopener noreferrer">
+              (NoSuitableOne@github.com)
+            </a>
+          </span>
+        </Col>
+      </Row>
     </Footer>
   );
 }

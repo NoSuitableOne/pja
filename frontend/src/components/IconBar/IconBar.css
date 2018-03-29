@@ -1,12 +1,11 @@
 #iconBar {
-  min-width: 480px;
   height: 100%;
   font-size: 24px;
 }
 
 #logo {
   height: 48px;
-  background: url("../../assets/rss.gif") no-repeat;
+  background: url("../../assets/logo.gif") no-repeat;
   background-size: contain;
 }
 
@@ -16,14 +15,15 @@
   line-height: 24px;
   font-size: 24px;
   padding-top: 10px;
+  min-width: 45px;
+  max-width: 50px;
 }
 
 #username {
-  display: inline-block;
   font-size: 14px;
   line-height: 1;
   color: rgba(255, 255, 255, 0.6);
-  padding: 0 4px;
+  max-width: 100px;
 }
 
 #icons {

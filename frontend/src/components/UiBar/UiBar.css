@@ -1,5 +1,4 @@
 #barCt {
-  min-width: 350px;
   color: rgba(255, 255, 255, 0.8);
   font-weight: 200;
 }
@@ -7,6 +6,7 @@
 .item {
   font-size: 12px;
   text-align: center;
+  max-width: 96px;
 }
 
 .languageSelect {

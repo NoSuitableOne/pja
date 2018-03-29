@@ -77,7 +77,7 @@ const Cardpad =
           (
             <div>
               <div>
-                <ul>
+                <ul className="news-cards">
                   {cardElement}
                 </ul>
               </div>

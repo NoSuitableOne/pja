@@ -9,10 +9,10 @@ function HeaderZone({ left, right }) {
     <Header id={styles.header}>
       <div className={styles.ct}>
         <Row type="flex" justify="space-between">
-          <Col span={8}>
+          <Col xs={10} sm={8} md={10} lg={8}>
             {left}
           </Col>
-          <Col span={6}>
+          <Col xs={14} sm={16} md={12} lg={12}>
             {right}
           </Col>
         </Row>
