@@ -46,26 +46,31 @@
   transition: transform 1.2s;
 }
 
-.verticalBanner1 {
-  composes: verticalBanner;
-  width: 40%;
-  height: 100%;
-  transform: rotate(15deg) scale(1.4, 1.4) translate(-35%, 0);
+@media screen and (min-width: 996px) {
+  .verticalBanner1 {
+    composes: verticalBanner;
+    width: 40%;
+    height: 100%;
+    transform: rotate(15deg) scale(1.4, 1.4) translate(-35%, 0);
+  }
+
+  .verticalBanner1:hover {
+    transform: rotate(15deg) scale(1.4, 1.4) translate(0, 0);
+    transition-timing-function: linear;
+  }
 }
 
-.verticalBanner1:hover {
-  transform: rotate(15deg) scale(1.4, 1.4) translate(0, 0);
-  transition-timing-function: linear;
-}
+@media screen and (min-width: 1360px) {
+  .verticalBanner2 {
+    composes: verticalBanner;
+    width: 15%;
+    height: 100%;
+    right: 0;
+    transform: rotate(15deg) scale(2, 1.4) translate(0, 0);
+  }
 
-.verticalBanner2 {
-  composes: verticalBanner;
-  width: 15%;
-  height: 100%;
-  transform: rotate(15deg) scale(1.8, 1.2) translate(370%, 0);
-}
-
-.verticalBanner2:hover {
-  transform: rotate(15deg) scale(3, 2) translate(-20%, 0);
-  transition-timing-function: linear;
+  .verticalBanner2:hover {
+    transform: rotate(15deg) scale(3.2, 2) translate(-20%, 0);
+    transition-timing-function: linear;
+  }
 }

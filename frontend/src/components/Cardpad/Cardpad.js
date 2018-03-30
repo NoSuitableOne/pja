@@ -83,11 +83,11 @@ const Cardpad =
               </div>
               <div>
                 <Pagination
+                  className={styles.pagination}
                   simple
                   size="small"
                   defaultCurrent={1}
                   current={current}
-                  className={styles.pagination}
                   pageSize={3}
                   total={total}
                   onChange={onPageChange}

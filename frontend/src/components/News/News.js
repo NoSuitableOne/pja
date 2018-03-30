@@ -6,7 +6,7 @@ import { setLocal } from '../../services/news';
 
 const News = ({ news, dispatch }) => {
   const CardpadElement = (news.display).map((ele, idx) => (
-    <Col key={idx} span={8}>
+    <Col key={idx} xs={24} lg={8}>
       <Cardpad
         current={ele.state.current}
         loading={ele.state.loading}
@@ -56,11 +56,9 @@ const News = ({ news, dispatch }) => {
   ));
 
   return (
-    <div>
-      <Row gutter={32}>
-        {CardpadElement}
-      </Row>
-    </div>
+    <Row gutter={32}>
+      {CardpadElement}
+    </Row>
   );
 };
 

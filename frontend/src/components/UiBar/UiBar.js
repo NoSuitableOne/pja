@@ -21,8 +21,8 @@ function UiBar({ ui, dispatch }) {
 
   return (
     <div id={styles.barCt} >
-      <Row type="flex" justify="center" align="right">
-        <Col className={styles.item} xs={16} sm={9} md={8} lg={6} push={6}>
+      <Row type="flex" justify="end" align="right">
+        <Col className={styles.item} xs={14} sm={9} md={8} lg={6}>
           <span>显示收藏</span>
           <Switch
             className={styles.switch}
@@ -32,7 +32,7 @@ function UiBar({ ui, dispatch }) {
             onChange={switchHandler}
           />
         </Col>
-        <Col className={styles.item} xs={0} sm={9} md={8} lg={6} push={6}>
+        <Col className={styles.item} xs={0} sm={9} md={8} lg={6}>
           <span>语言</span>
           <Dropdown disabled overlay={menu}>
             <Button className={styles.languageSelect} size="small">
@@ -41,7 +41,7 @@ function UiBar({ ui, dispatch }) {
             </Button>
           </Dropdown>
         </Col>
-        <Col className={styles.item} xs={0} lg={6} push={6}>
+        <Col className={styles.item} xs={0} lg={6}>
           <span>版本号 {CONSTANT.version}</span>
         </Col>
       </Row>

@@ -48,7 +48,7 @@ const IconBar = ({ icon, dispatch }) => {
       <Col id={styles.username} xs={0} sm={0} md={8} lg={6}>
         <span>你好，游客！</span>
       </Col>
-      <Col id={styles.icons} xs={12} sm={6} md={6} lg={4}>
+      <Col id={styles.icons} xs={12} sm={6} md={6} lg={5}>
         <Row>
           {
             !icon.fold

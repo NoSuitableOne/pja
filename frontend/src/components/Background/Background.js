@@ -6,6 +6,7 @@ class NewsBg extends React.Component {
     return (
       <div className={styles.bg} id="news-bg">
         <div className={styles.verticalBanner1} />
+        <div className={styles.verticalBanner2} />
       </div>
     );
   }
