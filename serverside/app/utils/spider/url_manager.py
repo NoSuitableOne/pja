@@ -18,4 +18,3 @@ class UrlManager(object):
         if urls is None:
             return
         self.jobs = urls
-        # print(self.urls)

@@ -37,6 +37,6 @@ class Segmentfaultpage(Resource, News):
         self.news = SegmentfaultNews()
 
     def get(self, page):
-        print(page)
+        # print(page)
         res = self.query(self.news, page)
         return jsonify(res)

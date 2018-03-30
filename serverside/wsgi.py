@@ -7,7 +7,6 @@ from deployment.setEnv import config
 
 # load config of app
 app_config = os.getenv('forknews') or config
-print(app_config)
 
 # forknews app
 forknews_app = create_app(app_config)

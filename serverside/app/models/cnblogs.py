@@ -20,7 +20,7 @@ class CnblogsNews(db.Model):
         for record in origin_data:
             data = parse_data(record)
             if CnblogsNews.query.filter_by(title=data.key).first() is not None:
-                print(data.title)
+                continue
             else:
                 db.session.add(data)
         db.session.commit()

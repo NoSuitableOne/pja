@@ -6,6 +6,7 @@ from app.models.segmentfault import SegmentfaultNews
 from app.models.juejin import JuejinNews
 from app.models.cnblogs import CnblogsNews
 from app.models.jobbole import JobboleNews
+from app.logger import spider_logger
 
 
 class Outputer(object):
@@ -13,9 +14,9 @@ class Outputer(object):
     def save_data(self, url_key, data):
         if data is None:
             return
-        print(data[data['table_name']])
         record = select_model(url_key)
         record.add_new_data(data[data['table_name']])
+        spider_logger.info('save data ok')
 
 
 def select_model(url_key):

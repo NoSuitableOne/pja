@@ -2,6 +2,7 @@
 # _*_ coding:utf-8 _*_
 
 from app.utils.spider import url_manager, downloader, html_parser, outputer
+from app.logger import spider_logger
 
 
 class CreateSpider(object):
@@ -17,18 +18,18 @@ class CreateSpider(object):
 
         while len(jobs) > 0:
             job = jobs.pop()
-            print(job)
+            spider_logger.info('do spider %s' % job)
             (url_key, target_url) = (job['key'], job['url'])
             try:
                 pass
-                # current_app.logger.info('download url s', target_urls[key])
+                spider_logger.info('download "%s"' % target_url)
                 html_content = self.downloader.download(target_url=target_url)
-                print('finish download url')
+                spider_logger.info('finish download "%s"' % target_url)
                 new_data = self.parser.parse(target_url=target_url, url_key=url_key, html_content=html_content)
-                print('finish parse html content')
+                spider_logger.info('finish parse "%s" html content' % target_url)
                 self.outputer.save_data(url_key=url_key, data=new_data)
             except Exception as e:
-                print('crawing went error:' + str(e))
+                spider_logger.error('crawing went error: %s' % str(e))
 
     def __repr__(self):
         dictionary = {'urls': self.url_manager, 'downloader': self.downloader, 'parser': self.parser}

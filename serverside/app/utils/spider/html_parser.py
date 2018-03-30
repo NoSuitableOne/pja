@@ -79,7 +79,10 @@ class HtmlParser(object):
             record['href'] = url_prifix + node.select('.news__item-title a')[0].get('href')
             raw_time = node.select('.news__item-meta span:nth-of-type(2)')[0].get_text(strip=True)
             record['time'] = segmentfault_time(raw_time=raw_time)
-            record['support'] = int(node.select('.stream__item-zan-number')[0].get_text(strip=True))
+            try:
+                record['support'] = int(node.select('.stream__item-zan-number')[0].get_text(strip=True))
+            except ValueError:
+                record['support'] = 0
             record['author'] = node.select('.news__item-meta a:nth-of-type(2)')[0].get_text(strip=True)
             res_data['segmentfault'].append(record)
 
