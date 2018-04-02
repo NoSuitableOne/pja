@@ -22,9 +22,7 @@ class CsdnNews(db.Model):
         for record in origin_data:
             data = parse_data(record)
             if CsdnNews.query.filter_by(key=data.key).first() is not None:
-                new_record = CsdnNews.query.filter_by(key=data.key).first()
-                new_record.time = data.time
-                db.session.add(new_record)
+                continue
             else:
                 db.session.add(data)
         db.session.commit()

@@ -28,7 +28,7 @@ class SegmentfaultNews(db.Model):
 
     def get_data_all(self):
         data = list()
-        records = SegmentfaultNews.query.order_by(db.desc(SegmentfaultNews.time)).all()
+        records = SegmentfaultNews.query.order_by(db.desc(SegmentfaultNews.time)).limit(100)
         for record in records:
             single_record = dict()
             single_record['title'] = record.title

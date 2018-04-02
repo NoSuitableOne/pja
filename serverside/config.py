@@ -8,26 +8,27 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config(object):
-    # config class
+    # config class  
     SECRET_KEY = ''
     SQLALCHEMY_DATABASE_URI = ''
+
+
+class ProductConfig(Config):
+    # product environment config
+    DEBUG = False
+    TESTING = False  
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     JOBS = [
         {
             'id': 'spider',
             'func': 'app.schedules.__init__:start_crawling',
             'trigger': 'cron',
-            'hour': 5,
-            'minute': 50,
-            'seconds': 15,
+            'hour': 23,
+            'minute': 55,
+            'second': 10,
         }
     ]
     SCHEDULER_API_ENABLE = True
-
-
-class ProductConfig(Config):
-    # product environment config
-    pass
 
 
 class DevConfig(Config):
@@ -41,9 +42,9 @@ class DevConfig(Config):
             'id': 'spider',
             'func': 'app.schedules.__init__:start_crawling',
             'trigger': 'cron',
-            'hour': 11,
-            'minute': 36,
-            'second': 50,
+            'hour': 5,
+            'minute': 50,
+            'second': 15,
         }
     ]
     SCHEDULER_API_ENABLE = True

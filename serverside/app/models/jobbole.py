@@ -27,7 +27,7 @@ class JobboleNews(db.Model):
 
     def get_data_all(self):
         data = list()
-        records = JobboleNews.query.order_by(db.desc(JobboleNews.time)).all()
+        records = JobboleNews.query.order_by(db.desc(JobboleNews.time)).limit(100)
         for record in records:
             single_record = dict()
             single_record['title'] = record.title

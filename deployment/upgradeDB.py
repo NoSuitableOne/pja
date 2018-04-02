@@ -6,15 +6,16 @@ import sys
 import sqlite3
 
 
-basedir = os.path.abspath(os.path.dirname(__file__) + os.sep + '../')
-sys.path.append(basedir + os.sep + '../')
+root_path = os.path.abspath(os.path.dirname(__file__) + os.sep + '..')
+sys.path.append(root_path)
+
 
 
 from app.constant import ForkNewsDB_db
 from app.utils.spider.support import csdn_time, segmentfault_time
 
 
-db_url = os.path.join(basedir, ForkNewsDB_db)
+db_url = os.path.join(root_path, ForkNewsDB_db)
 
 connect = sqlite3.connect(db_url)
 
