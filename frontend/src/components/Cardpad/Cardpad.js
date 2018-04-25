@@ -1,4 +1,3 @@
-/* eslint-disable quote-props */
 import React from 'react';
 import { Alert, Card, Icon, Pagination, Row, Col, Tooltip } from 'antd';
 import styles from './Cardpad.css';

@@ -4,8 +4,12 @@ import request from '../utils/request';
 
 // http请求
 function fetchNews(url) {
-  // const targetUrl = `/${CONSTANT.version}/news${url}`;
-  const targetUrl = `/api/news${url}`;
+  let targetUrl;
+  if (process.env.NODE_ENV === 'production') {
+    targetUrl = `/api/news${url}`;
+  } else if (process.env.NODE_ENV === 'development') {
+    targetUrl = `/${CONSTANT.version}/news${url}`;
+  }
   return request(targetUrl);
 }
 
